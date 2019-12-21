@@ -1,0 +1,101 @@
+# ======================================================================
+# aliases
+alias sf="screenfetch"
+alias suupdate="sudo apt update; sudo apt upgrade -y; sudo apt autoremove -y; sudo apt autoclean -y; exit"
+alias suclean="sudo apt autoremove -y; sudo apt autoclean -y"
+alias sourcezsh="source $HOME/.zshrc"
+alias gohome="cd $GOPATH/src"
+alias search='grep -nr'
+
+# git
+alias gcdev="git checkout dev"
+alias gco-="gco -"
+alias gs="git status"
+alias gsubupdate="git submodule foreach git pull --rebase origin master"
+alias gupori="gup; gfa"
+
+# tmux
+alias tnew="tmux new -s"
+alias tlist="tmux list-session"
+
+# make c
+alias sumake="sudo make clean install"
+
+# count code lines
+alias countpy="find . -name \"*.py\" | xargs grep -v \"^$\" | wc -l"
+alias countgo="find . -name \"*.go\" | xargs grep -v \"^$\" | wc -l"
+
+# ======================================================================
+# vim edit
+alias vi="nvim"
+alias vim="nvim"
+alias vimplugrefresh="vim +PlugInstall +PlugClean +PlugUpdate"
+alias vimpluginstall="vim +PlugInstall +PlugClean +qa"
+alias vimplugupdate="vim +PlugUpdate +PlugClean +qa"
+
+# edit config
+alias vimplug="vim $HOME/.config/nvim/plugins.vim"
+alias vimvim="vim $HOME/.config/nvim/init.vim"
+alias vimvimlocal="vim $HOME/.vimrc.local"
+
+alias vimssh="vim $HOME/.ssh/config"
+alias vimtmux="vim $HOME/.tmux.conf.local"
+alias vimtmuxori="vim $HOME/.tmux.conf"
+alias vimzsh="vim $HOME/.zshrc; source $HOME/.zshrc"
+alias vimi3="cd $HOME/.config/i3; vim config"
+alias vimi3status="vim $HOME/.config/i3status/config"
+
+# st
+alias gost="cd $HOME/softwares/st"
+alias vimst="vim $HOME/softwares/st/config.h"
+
+# ======================================================================
+# tools
+
+# dict
+dict() {
+    str=''
+    arr=("$@")
+    for (( i=1; i<=$#arr; i++ )); do
+        if [ "$i" -eq 1 ]; then
+            str+="${arr[$i]}"
+        else
+            str+="%20${arr[$i]}"
+        fi
+    done
+    curl "v2en.co/$str"
+}
+
+# ======================================================================
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+export FZF_DEFAULT_COMMAND="fd --exclude={.git,.vscode,node_modules,build} --type f"
+
+# fzf alias
+alias gcof='gco $(gb | fzf)'
+alias psf="ps -ef | fzf"
+
+# fuzzy find and copy file
+function ffc {
+    local cli=`fd $* | fzf | xargs echo -n`;
+    case "${cli##*.}" in
+        "png")
+            echo -n ${cli} | xargs -I{} xclip -selection clipboard -t image/png -i {}
+            ;;
+        "py")
+            echo -n ${cli} | xargs -I{} xclip -selection clipboard -i {}
+            ;;
+        "go")
+            echo -n ${cli} | xargs -I{} xclip -selection clipboard -i {}
+            ;;
+        "yaml")
+            echo -n ${cli} | xargs -I{} xclip -selection clipboard -i {}
+            ;;
+        "yml")
+            echo -n ${cli} | xargs -I{} xclip -selection clipboard -i {}
+            ;;
+        *)
+            echo "unsupported type"
+    esac
+}
+
