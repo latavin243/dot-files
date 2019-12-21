@@ -21,10 +21,6 @@ alias tlist="tmux list-session"
 # make c
 alias sumake="sudo make clean install"
 
-# count code lines
-alias countpy="find . -name \"*.py\" | xargs grep -v \"^$\" | wc -l"
-alias countgo="find . -name \"*.go\" | xargs grep -v \"^$\" | wc -l"
-
 # ======================================================================
 # vim edit
 alias vi="nvim"
@@ -99,3 +95,7 @@ function ffc {
     esac
 }
 
+# count code lines
+countcode() {
+    find . -name "*.$1" | xargs grep -v "^$" | wc -l
+}
