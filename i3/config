@@ -10,6 +10,8 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
+set $ctrl Control
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -30,13 +32,15 @@ font hack:pango Mono 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+grave exec xfce4-terminal --drop-down
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
+# bindsym $mod+x exec gmrun
+bindsym $mod+x exec dmenu_run
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
@@ -48,17 +52,21 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
 # move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# split in horizontal orientation
-bindsym $mod+semicolon split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -78,7 +86,20 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+d focus child
+
+# # assign workspace to different screen
+# # Run `xrandr | grep ' connected'` or `xrandr --listactivemonitors` to connected screens
+# workspace 1 output DP-1-1
+# workspace 2 output DP-1-1
+# workspace 3 output DP-1-1
+# workspace 4 output DP-1-1
+# workspace 5 output DP-1-3
+# workspace 6 output DP-1-3
+# workspace 7 output DP-1-3
+# workspace 8 output eDP-1
+# workspace 9 output eDP-1
+# workspace 10 output eDP-1
 
 # switch to workspace
 bindsym $mod+1 workspace 1
@@ -135,6 +156,26 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
+set $mode_workspace "[m]ove-back-forth mark-by-[n]ame [g]oto-mark [r]esize [h]orizontal/[v]ertical-split [k]ill-window"
+bindsym $mod+m mode $mode_workspace
+mode $mode_workspace {
+  # move workspace back and forth
+  bindsym m workspace back_and_forth
+  # mark workspace by name
+  bindsym n exec i3-input -F 'mark %s' -P 'Mark name: '; mode "default"
+  # goto named workspace
+  bindsym g exec i3-input -F '[con_mark=%s] focus' -P 'Go to mark: '; mode "default"
+  # kill focused window
+  bindsym k kill; mode "default"
+  bindsym r mode "resize"
+  # split in horizontal orientation
+  bindsym h split h; mode "default"
+  # split in vertical orientation
+  bindsym v split v; mode "default"
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -144,13 +185,17 @@ bar {
     font pango:mono 9
     mode dock
     position top
+
+    #hidden_state hide
+    #status_command i3status --config $HOME/.config/i3/status.conf
+    #modifier $mod
 }
 
 # assign chrome to workspace 1: browser
 # assign [class="Google-chrome"] "browser"
 
 # background
-exec --no-startup-id feh --randomize --bg-fill $PICTUREPATH/wallpaper/*
+exec --no-startup-id feh --randomize --bg-fill $HOME/Pictures/wallpaper/*
 
 # chrome
 bindsym $mod+c exec google-chrome-stable
@@ -162,3 +207,18 @@ bindsym $mod+c exec google-chrome-stable
 gaps inner 3
 gaps outer 3
 for_window [class="^.*"] border pixel 0
+
+# # volume keys
+# bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -q -c 0 sset Master 1+
+# bindsym XF86AudioLowerVolume exec --no-startup-id amixer -q -c 0 sset Master 1-
+# bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+
+# amixer
+bindsym $mod+F3 exec amixer set Master 5%+
+bindsym $mod+F2 exec amixer set Master 5%-
+bindsym $mod+F1 exec amixer set Master toggle
+
+# screen brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id /home/cb/bin/adjust-brightness up
+bindsym XF86MonBrightnessDown exec --no-startup-id /home/cb/bin/adjust-brightness down
+
