@@ -279,7 +279,9 @@ let g:airline#extensions#ale#enabled = 1
 " ===
 " === input method
 " ===
+" fcitx {
 Plug 'lilydjwg/fcitx.vim'
+" }
 
 " ===
 " === filer
@@ -338,8 +340,9 @@ command! -bang -nargs=* Rg
 " ===
 " === format
 " ===
-" tabular
+" tabular {
 Plug 'godlygeek/tabular'
+" }
 
 " object-after {
 Plug 'junegunn/vim-after-object'
@@ -357,6 +360,14 @@ xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
 " }
 
+" ===
+" === entertainment
+" ===
+" comfortable-motion {
+Plug 'yuttie/comfortable-motion.vim'
+let g:comfortable_motion_scroll_down_key = "j"
+let g:comfortable_motion_scroll_up_key = "k"
+" }
 
 " ===
 " === autocomplete
