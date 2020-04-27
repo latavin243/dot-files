@@ -2,13 +2,13 @@
     "json.format.enable": true,
     "languageserver": {
         "golang": {
-			"command": "gopls",
+			"command": "gofmt",
 			"rootPatterns": ["go.mod", ".git"],
 			"filetypes": ["go"],
 			"initializationOptions": {
 				"gocodeCompletionEnabled": true,
 				"diagnosticsEnabled": true,
-				"lintTool": "golint"
+				"lintTool": "govet"
 			}
 		}
     }
