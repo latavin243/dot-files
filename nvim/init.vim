@@ -77,7 +77,7 @@ set wildmode=longest,list,full
 " key mappings {
 noremap s <nop>
 
-" buffer jump
+" buffer
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
@@ -234,6 +234,7 @@ Plug 'junegunn/vim-peekaboo'
 " easymotion {
 Plug 'easymotion/vim-easymotion'
 nmap ss <Plug>(easymotion-s2)
+let g:EasyMotion_smartcase=1
 " }
 
 " nerdtree-git-plugin {
