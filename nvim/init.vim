@@ -213,7 +213,6 @@ call plug#begin('~/.config/nvim/plugins')
 Plug 'bling/vim-bufferline'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'jiangmiao/auto-pairs'
-Plug 'mhinz/vim-startify'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
@@ -303,6 +302,12 @@ let g:NERDTreeDirArrowCollapsible = '-'
 autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
 " }
 
+" startify {
+Plug 'mhinz/vim-startify'
+let g:startify_change_to_dir=0
+let g:startify_change_to_vcs_root=1
+" }
+
 " ===
 " === search
 " ===
@@ -321,7 +326,7 @@ Plug 'junegunn/fzf.vim'
 nnoremap <c-p> :FZF<cr>
 nnoremap <leader>p :FZF<cr>
 nnoremap <leader>rg :Rg<cr>
-nnoremap <leader>ag :Ag<cr>
+" nnoremap <leader>ag :Ag<cr>
 
 command! -bang -nargs=* Ag
   \ call fzf#vim#ag(
