@@ -8,7 +8,7 @@
 			"initializationOptions": {
 				"gocodeCompletionEnabled": true,
 				"diagnosticsEnabled": true,
-				"lintTool": "govet"
+				"lintTool": "golint"
 			}
 		}
     }
