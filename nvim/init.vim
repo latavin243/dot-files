@@ -157,12 +157,9 @@ noremap <leader>q <c-w>j:q<cr>
 " tab {
 " Create a new tab with tu
 noremap tu :tabe<CR>
-" Move around tabs with tn and ti
-noremap tn :-tabnext<CR>
-noremap ti :+tabnext<CR>
-" Move the tabs with tmn and tmi
-noremap tmn :-tabmove<CR>
-noremap tmi :+tabmove<CR>
+" Move the tabs with tn and ti
+noremap tn :tabmove -<CR>
+noremap ti :tabmove +<CR>
 " }
 
 " get next pattern in visual mode {
@@ -530,7 +527,7 @@ Plug 'vim-airline/vim-airline'
 
 " rainbow {
 Plug 'luochen1990/rainbow'
-let g:rainbow_active=1
+let g:rainbow_active=0
 " }
 
 call plug#end()
