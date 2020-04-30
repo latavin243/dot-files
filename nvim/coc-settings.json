@@ -2,15 +2,72 @@
     "json.format.enable": true,
     "languageserver": {
         "golang": {
-			"command": "gofmt",
+			"command": "gopls",
 			"rootPatterns": ["go.mod", ".git"],
 			"filetypes": ["go"],
 			"initializationOptions": {
 				"gocodeCompletionEnabled": true,
 				"diagnosticsEnabled": true,
-				"lintTool": "golint"
+				"lintTool": "go vet",
+				"formatTool": "gofmt"
 			}
 		}
+    },
+    "explorer.keyMappings": {
+        "k": "nodePrev",
+        "j": "nodeNext",
+        "gk": "expandablePrev",
+        "gj": "expandableNext",
+
+        "*": "toggleSelection",
+        "<tab>": "actionMenu",
+
+        "h": "collapse",
+        "l": ["expandable?", "expand", "open"],
+        "J": ["toggleSelection", "nodeNext"],
+        "K": ["toggleSelection", "nodePrev"],
+        "gl": "expandRecursive",
+        "gh": "collapseRecursive",
+        "o": "expandOrCollapse",
+        "<cr>": ["expandable?", "cd", "open"],
+        "e": "open",
+        "s": "open:vsplit",
+        "S": "open:split",
+        "t": "open:tab",
+        "<bs>": "gotoParent",
+        "gp": "preview:labeling",
+
+        "y": "copyFilepath",
+        "Y": "copyFilename",
+        "c": "copyFile",
+        "x": "cutFile",
+        "p": "pasteFile",
+        "d": "delete",
+        "D": "deleteForever",
+
+        "a": "addFile",
+        "A": "addDirectory",
+        "r": "rename",
+
+        ".": "toggleHidden",
+        "R": "refresh",
+
+        "?": "help",
+        "q": "quit",
+        "<esc>": "esc",
+        "X": "systemExecute",
+        "gd": "listDrive",
+
+        "f": "search",
+        "F": "searchRecursive",
+
+        "gf": "gotoSource:file",
+        "gb": "gotoSource:buffer",
+
+        "[[": "sourcePrev",
+        "]]": "sourceNext",
+
+        "[d": "diagnosticPrev",
+        "]d": "diagnosticNext"
     }
 }
-

@@ -109,6 +109,9 @@ nnoremap < <<
 " no hlsearch
 nnoremap <leader><cr> :noh
 
+" line wrap
+nnoremap <leader>wp :set wrap<cr>
+
 " open terminal below
 noremap <leader>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
@@ -158,8 +161,8 @@ noremap <leader>q <c-w>j:q<cr>
 " Create a new tab with tu
 noremap tu :tabe<CR>
 " Move the tabs with tn and ti
-noremap tn :tabmove -<CR>
-noremap ti :tabmove +<CR>
+noremap tn :tabmove +<CR>
+noremap ti :tabmove -<CR>
 " }
 
 " get next pattern in visual mode {
@@ -177,6 +180,7 @@ endfunction
 " coding {
 " autoformat
 autocmd BufEnter *.py :set ft=python
+autocmd BufEnter *.go :set ft=go
 autocmd bufwrite *.{py,go} :Autoformat
 
 " yaml
@@ -350,6 +354,36 @@ Plug 'godlygeek/tabular'
 " object-after {
 Plug 'junegunn/vim-after-object'
 autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
+" }
+
+
+" ===
+" === markdown
+" ===
+
+" markdown-preview {
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_command_for_global = 0
+let g:mkdp_open_to_the_world = 0
+let g:mkdp_open_ip = ''
+let g:mkdp_echo_preview_url = 0
+let g:mkdp_browserfunc = ''
+let g:mkdp_preview_options = {
+    \ 'mkit': {},
+    \ 'katex': {},
+    \ 'uml': {},
+    \ 'maid': {},
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1
+    \ }
+let g:mkdp_markdown_css = ''
+let g:mkdp_highlight_css = ''
+let g:mkdp_port = ''
+let g:mkdp_page_title = '「${name}」'
 " }
 
 " table-mode {
