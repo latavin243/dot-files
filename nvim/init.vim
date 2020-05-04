@@ -278,18 +278,12 @@ let g:airline#extensions#ale#enabled = 1
 " }
 
 " ===
-" === input method
-" ===
-" fcitx {
-Plug 'lilydjwg/fcitx.vim'
-" }
-
-" ===
 " === filer
 " ===
 " nerdtree {
 Plug 'scrooloose/nerdtree'
-map <c-e> :NERDTreeToggle<cr>
+" map <c-e> :NERDTreeToggle<cr>
+nnoremap <leader>tt :NerdTreeToggle<cr>
 let g:NERDChristmasTree=0
 let g:NERDTreeWinSize=30
 let g:NERDTreeChDirMode=2
@@ -434,6 +428,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
+map <c-e> :CocCommand explorer<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
