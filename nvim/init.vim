@@ -95,8 +95,8 @@ map <c-f> <nop>
 map <c-q> <nop>
 
 " select autocomplete suggestions
-inoremap <c-j> <down>
-inoremap <c-k> <up>
+" inoremap <c-j> <down>
+" inoremap <c-k> <up>
 
 " copy
 nnoremap Y y$
@@ -116,8 +116,8 @@ nnoremap <leader>wp :set wrap<cr>
 noremap <leader>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
 " customize placeholder <XD>
-nnoremap <leader><c-t> <esc>a<XD><esc>
-nnoremap <c-t> h/<XD><cr>:nohl<cr>"_c4l
+nnoremap <leader><c-t> a<XD><esc>
+nnoremap <c-t> b/<XD><cr>:nohl<cr>"_c4l
 inoremap <c-t> <esc>/<XD><cr>:nohl<cr>"_c4l
 
 " todo placeholder `TODO`
@@ -428,7 +428,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nmap tt :CocCommand explorer<CR>
-map <c-e> :CocCommand explorer<cr>
+nnoremap <c-e> :CocCommand explorer<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
