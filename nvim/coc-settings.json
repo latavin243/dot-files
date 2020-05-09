@@ -13,6 +13,8 @@
 			}
 		}
     },
+    "explorer.width": 40,
+    "explorer.quitOnOpen": true,
     "explorer.keyMappings": {
         "k": "nodePrev",
         "j": "nodeNext",
