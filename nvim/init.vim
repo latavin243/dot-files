@@ -237,23 +237,6 @@ nmap ss <Plug>(easymotion-s2)
 let g:EasyMotion_smartcase=1
 " }
 
-" nerdtree-git-plugin {
-Plug 'Xuyuanp/nerdtree-git-plugin'
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "mdf",
-    \ "Staged"    : "stg",
-    \ "Untracked" : "utk",
-    \ "Renamed"   : "rnm",
-    \ "Unmerged"  : "umg",
-    \ "Deleted"   : "dlt",
-    \ "Dirty"     : "dty",
-    \ "Clean"     : "cln",
-    \ 'Ignored'   : "ign",
-    \ "Unknown"   : "ukn"
-    \ }
-let g:NERDTreeUpdateOnWrite = 0
-" }
-
 " guentags {
 Plug 'ludovicchabant/vim-gutentags'
 let g:gutentags_project_root = ['.git','.project']
@@ -280,23 +263,6 @@ let g:airline#extensions#ale#enabled = 1
 " ===
 " === filer
 " ===
-" nerdtree {
-Plug 'scrooloose/nerdtree'
-" map <c-e> :NERDTreeToggle<cr>
-nnoremap <leader>tt :NerdTreeToggle<cr>
-let g:NERDChristmasTree=0
-let g:NERDTreeWinSize=30
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$', '__pycache__', '\.vscode']
-let g:NERDTreeShowBookmarks=1
-let g:NERDTreeWinPos = 'left'
-let g:NERDTreeHidden=1
-let g:NERDTreeDirArrowExpandable = '+'
-let g:NERDTreeDirArrowCollapsible = '-'
-" close if nerdtree is the last window left
-autocmd bufenter * if (winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree()) | q | endif
-" }
-
 " startify {
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir=0
