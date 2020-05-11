@@ -287,15 +287,6 @@ Plug 'junegunn/fzf.vim'
 nnoremap <c-p> :FZF<cr>
 nnoremap <leader>p :FZF<cr>
 nnoremap <leader>rg :Rg<cr>
-" nnoremap <leader>ag :Ag<cr>
-
-command! -bang -nargs=* Ag
-  \ call fzf#vim#ag(
-  \   '',
-  \   <bang>0 ? fzf#vim#with_preview('up:50%')
-  \           : fzf#vim#with_preview('right:50%', '?'),
-  \   <bang>0)
-
 command! -bang -nargs=* Rg
   \ call fzf#vim#grep(
   \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
