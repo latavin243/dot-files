@@ -381,10 +381,9 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-nmap tt :CocCommand explorer<CR>
 nnoremap <c-e> :CocCommand explorer<cr>
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -446,7 +445,7 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
+" nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 
@@ -483,7 +482,7 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/', 'ultisnip
 " === language
 " ===
 " vim-go {
-Plug 'fatih/vim-go' , { 'for': ['go', 'vim-plug'], 'tag': '*' }
+Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*'}
 let g:go_version_warning = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls  =  1
@@ -499,6 +498,8 @@ let g:go_decls_includes = "func"
 let g:go_decls_includes = "func,type"
 let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
+
+nnoremap gi :GoImplement<cr>
 " }
 
 " python-mode {
