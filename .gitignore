@@ -1,2 +1,8 @@
 nvim/cache
 nvim/plugins
+
+# mac
+.DS_Store
+
+# nvim
+nvim/.netrwhist
