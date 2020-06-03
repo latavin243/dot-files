@@ -7,9 +7,9 @@
 			"filetypes": ["go"],
 			"initializationOptions": {
 				"gocodeCompletionEnabled": true,
-				"diagnosticsEnabled": true,
-				"lintTool": "go vet",
-				"formatTool": "gofmt"
+				"diagnosticsEnabled": false,
+				// "lintTool": "go vet",
+				"formatTool": "golint"
 			}
 		}
     },

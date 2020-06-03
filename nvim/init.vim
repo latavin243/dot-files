@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et tw=80 foldmarker={,} foldlevel=0 foldmethod=marker nospell:
+" vim: set sw=4 ts=4 sts=4 et tw=80 foldlevel=0 foldmarker={,} foldmethod=marker nospell:
 "             _                              __ _
 "  _ ____   _(_)_ __ ___     ___ ___  _ __  / _(_) __ _
 " | '_ \ \ / / | '_ ` _ \   / __/ _ \| '_ \| |_| |/ _` |
@@ -8,7 +8,7 @@
 
 " author: @latavin243
 
-" basic settings {
+" basic settings {{{
 let mapleader=' '
 
 syntax enable
@@ -23,7 +23,8 @@ set ttyfast  " scroll faster
 set lazyredraw " scroll faster
 
 set inccommand=split
-" }
+set diffopt+=vertical " split vertically
+" }}}
 
 " indentation {
 set autoindent
@@ -40,7 +41,7 @@ set number
 set relativenumber
 set textwidth=120
 set nowrap
-set scrolloff=5
+set scrolloff=4
 set sidescrolloff=10
 set laststatus=2
 " }
@@ -75,7 +76,8 @@ set wildmode=longest,list,full
 " }
 
 " key mappings {
-noremap s <nop>
+" noremap s <nop>
+noremap Q <nop>
 
 " buffer
 nnoremap <silent> [b :bprevious<CR>
@@ -117,7 +119,7 @@ noremap <leader>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
 " customize placeholder <XD>
 nnoremap <leader><c-t> a<XD><esc>
-nnoremap <c-t> b/<XD><cr>:nohl<cr>"_c4l
+nnoremap <c-t> /<XD><cr>:nohl<cr>"_c4l
 inoremap <c-t> <esc>/<XD><cr>:nohl<cr>"_c4l
 
 " todo placeholder `TODO`
@@ -148,10 +150,11 @@ inoremap <c-p> <up>
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-d> <del>
+inoremap <c-k> <esc>lC
 
 " rotate windows
-noremap srh <c-w>b<c-w>K
-noremap srv <c-w>b<c-w>H
+" noremap srh <c-w>b<c-w>K
+" noremap srv <c-w>b<c-w>H
 
 " close window below
 noremap <leader>q <c-w>j:q<cr>
@@ -160,9 +163,10 @@ noremap <leader>q <c-w>j:q<cr>
 " tab {
 " Create a new tab with tu
 noremap tu :tabe<CR>
+noremap tn :tabnew<cr>
 " Move the tabs with tn and ti
-noremap tn :tabmove +<CR>
-noremap ti :tabmove -<CR>
+noremap t+ :tabmove +<CR>
+noremap t- :tabmove -<CR>
 " }
 
 " get next pattern in visual mode {
@@ -223,7 +227,6 @@ Plug 'tpope/vim-repeat'
 Plug 'Yggdroot/indentLine'
 Plug 'chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
-Plug 'scrooloose/nerdcommenter'
 Plug 'terryma/vim-expand-region'
 " show mark
 Plug 'kshenoy/vim-signature'
@@ -233,7 +236,8 @@ Plug 'junegunn/vim-peekaboo'
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
-nmap ss <Plug>(easymotion-s2)
+" nmap ss <Plug>(easymotion-s2)
+nmap ff <Plug>(easymotion-s2)
 let g:EasyMotion_smartcase=1
 " }
 
@@ -262,6 +266,18 @@ let g:airline#extensions#ale#enabled = 1
 " }
 
 " ===
+" === editing
+" ===
+" nerdcommentor {
+Plug 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims=1
+let g:NERDCompactSexyComs=1
+let g:NERDCommentEmptyLines=1
+let g:NERDDefaultAlign='left'
+" }
+
+
+" ===
 " === filer
 " ===
 " startify {
@@ -277,6 +293,7 @@ let g:startify_change_to_vcs_root=1
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ShortcutF = "<leader>ff"
 let g:Lf_ReverseOrder = 1
+let g:Lf_Ctags = "universal-ctags"
 nnoremap <leader>sf :Leaderf<space>rg<cr>
 " }
 
@@ -353,9 +370,9 @@ nmap ga <Plug>(EasyAlign)
 " === entertainment
 " ===
 " comfortable-motion {
-Plug 'yuttie/comfortable-motion.vim'
-let g:comfortable_motion_scroll_down_key = "j"
-let g:comfortable_motion_scroll_up_key = "k"
+"Plug 'yuttie/comfortable-motion.vim'
+"let g:comfortable_motion_scroll_down_key = "j"
+"let g:comfortable_motion_scroll_up_key = "k"
 " }
 
 " ===
@@ -364,7 +381,7 @@ let g:comfortable_motion_scroll_up_key = "k"
 " coc {
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-json', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-highlight', 'coc-json', 'coc-explorer']
+let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-json', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-json', 'coc-explorer']
 
 " Trigger completion.
 inoremap <silent><expr> <c-q> coc#refresh()
@@ -464,10 +481,6 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " }
 
-" coc-highlight {
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" }
-
 " untisnips & vim-snippets {
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -494,7 +507,7 @@ let g:go_highlight_build_constraints = -1
 let g:go_highlight_types  =  1
 let g:go_highlight_fields  =  1
 let g:go_highlight_extra_types = 1
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = "gofmt"
 let g:go_decls_includes = "func"
 let g:go_decls_includes = "func,type"
 let g:go_def_mode = 'godef'
@@ -511,6 +524,7 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " === theme
 " ===
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'vim-scripts/peaksea'
 Plug 'vim-airline/vim-airline'
 
 " rainbow {
@@ -524,6 +538,7 @@ call plug#end()
 " theme {
 colorscheme PaperColor
 set background=dark
+
 " transparent
 hi Normal ctermbg=None
 " }
