@@ -1,4 +1,4 @@
-" vim: set sw=4 ts=4 sts=4 et tw=80 foldlevel=0 foldmarker={,} foldmethod=marker nospell:
+" vim: set sw=4 ts=4 sts=4 et tw=80 nospell:
 "             _                              __ _
 "  _ ____   _(_)_ __ ___     ___ ___  _ __  / _(_) __ _
 " | '_ \ \ / / | '_ ` _ \   / __/ _ \| '_ \| |_| |/ _` |
@@ -92,8 +92,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
 " disable some mappings
-map <c-b> <nop>
-map <c-f> <nop>
+" map <c-b> <nop>
+" map <c-f> <nop>
 map <c-q> <nop>
 
 " select autocomplete suggestions
@@ -229,7 +229,7 @@ Plug 'chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-expand-region'
 " show mark
-Plug 'kshenoy/vim-signature'
+" Plug 'kshenoy/vim-signature'
 
 " reg list
 Plug 'junegunn/vim-peekaboo'
@@ -482,13 +482,13 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " }
 
 " untisnips & vim-snippets {
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips'
+" Plug 'honza/vim-snippets'
 
-let g:UltiSnipsExpandTrigger="<c-f>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/', 'ultisnips']
+" let g:UltiSnipsExpandTrigger="<c-f>"
+" let g:UltiSnipsJumpForwardTrigger="<c-f>"
+" let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+" let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/', 'ultisnips']
 
 " }
 
@@ -525,7 +525,16 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " ===
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'vim-scripts/peaksea'
+
+" airline {
 Plug 'vim-airline/vim-airline'
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_nr_show=1
+" let g:airline_section_b='' " vcs info
+let g:airline_section_c='' " filename
+let g:airline_section_y='' " file encoding
+" }
+
 
 " rainbow {
 Plug 'luochen1990/rainbow'
