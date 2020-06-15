@@ -117,10 +117,10 @@ nnoremap <leader>wp :set wrap<cr>
 " open terminal below
 noremap <leader>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
-" customize placeholder <XD>
-nnoremap <leader><c-t> a<XD><esc>
-nnoremap <c-t> /<XD><cr>:nohl<cr>"_c4l
-inoremap <c-t> <esc>/<XD><cr>:nohl<cr>"_c4l
+" customize placeholder _XD_
+nnoremap <leader><c-t> a_XD_<esc>
+nnoremap <c-t> b/_XD_<cr>:nohl<cr>"_c4l
+inoremap <c-t> <esc>/_XD_<cr>:nohl<cr>"_c4l
 
 " todo placeholder `TODO`
 nnoremap <leader>to /TODO<cr>:nohl<cr>v$h
