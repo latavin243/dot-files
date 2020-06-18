@@ -276,6 +276,10 @@ let g:NERDCommentEmptyLines=1
 let g:NERDDefaultAlign='left'
 " }
 
+" illuminate {
+Plug 'RRethy/vim-illuminate' " highlight word under cursor
+" }
+
 
 " ===
 " === filer
@@ -331,7 +335,7 @@ autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
 " ===
 
 " markdown-preview {
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown'] }
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -356,7 +360,7 @@ let g:mkdp_page_title = '「${name}」'
 " }
 
 " table-mode {
-Plug 'dhruvasagar/vim-table-mode'
+Plug 'dhruvasagar/vim-table-mode', {'on': 'TableModeToggle', 'for': ['markdown', 'text']}
 nnoremap <leader>tm :TableModeToggle
 " }
 
@@ -538,7 +542,7 @@ let g:airline_section_y='' " file encoding
 
 " rainbow {
 Plug 'luochen1990/rainbow'
-let g:rainbow_active=0
+let g:rainbow_active=1
 " }
 
 call plug#end()
@@ -557,3 +561,24 @@ if filereadable(expand("$HOME/.vimrc.local"))
     source $HOME/.vimrc.local
 endif
 " }
+
+" run vim run {
+noremap <leader>rr :call RunVimRun()<CR>
+func! RunVimRun()
+	exec "w"
+	if &filetype == 'sh'
+		:!time bash %
+	elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go run .
+	elseif &filetype == 'python'
+		set splitbelow
+		:sp
+		:term python3 %
+	elseif &filetype == 'markdown'
+		exec "MarkdownPreview"
+	endif
+endfunc
+" }
+
