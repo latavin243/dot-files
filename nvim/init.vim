@@ -521,6 +521,10 @@ nnoremap gi :GoImplement<cr>
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 " }
 
+" gitignore {
+Plug 'gisphm/vim-gitignore'
+" }
+
 " ===
 " === theme
 " ===
