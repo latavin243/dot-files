@@ -535,7 +535,7 @@ Plug 'vim-scripts/peaksea'
 Plug 'vim-airline/vim-airline'
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
-" let g:airline_section_b='' " vcs info
+let g:airline_section_b='' " vcs info
 let g:airline_section_c='' " filename
 let g:airline_section_y='' " file encoding
 " }
