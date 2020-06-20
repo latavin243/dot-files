@@ -225,3 +225,6 @@ exec --no-startup-id fcitx
 
 # capslock as ctrl
 exec --no-startup-id setxkbmap -option 'ctrl:nocaps'
+
+# fcitx
+exec --no-startup-id fcitx
