@@ -192,7 +192,7 @@ bar {
 }
 
 # background
-exec --no-startup-id feh --randomize --bg-fill $HOME/Pictures/wallpaper/*
+exec --no-startup-id feh --randomize --bg-scale $HOME/Pictures/wallpaper/*
 
 # chromium
 bindsym $mod+c exec chromium
