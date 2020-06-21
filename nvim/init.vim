@@ -497,7 +497,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " === language
 " ===
 " vim-go {
-Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*'}
+Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*', 'do': ':GoUpdateBinaries' }
 let g:go_version_warning = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls  =  1
