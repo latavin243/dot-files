@@ -191,14 +191,11 @@ bar {
     #modifier $mod
 }
 
-# assign chrome to workspace 1: browser
-# assign [class="Google-chrome"] "browser"
-
 # background
 exec --no-startup-id feh --randomize --bg-fill $HOME/Pictures/wallpaper/*
 
-# chrome
-bindsym $mod+c exec google-chrome-stable
+# chromium
+bindsym $mod+c exec chromium
 
 # monitors
 # exec --no-startup-id xrandr --output HDMI-1 --auto --right-of DP-1
