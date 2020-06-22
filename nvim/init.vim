@@ -583,3 +583,21 @@ func! RunVimRun()
 endfunc
 " }
 
+" clear history
+func! CleanHistory()
+    :g/;ls$/d
+    :g/;cd$/d
+    :g/;exit$/d
+    :g/;gb$/d
+
+    " vim
+    :g/;vim$/d
+    :g/;vimzsh$/d
+    :g/;vimvim$/d
+    :g/fg/d
+
+    " git
+    :g/;gst$/d
+    :g/;gd$/d
+    :g/;gcof$/d
+endfunc
