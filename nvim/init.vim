@@ -118,8 +118,8 @@ nnoremap <leader>wp :set wrap<cr>
 noremap <leader>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
 " customize placeholder _XD_
-nnoremap <leader><c-t> a_XD_<esc>
-nnoremap <c-t> b/_XD_<cr>:nohl<cr>"_c4l
+" nnoremap <leader><c-t> a_XD_<esc>
+nnoremap <leader><c-t> b/_XD_<cr>:nohl<cr>"_c4l
 inoremap <c-t> <esc>/_XD_<cr>:nohl<cr>"_c4l
 
 " todo placeholder `TODO`
@@ -622,4 +622,8 @@ func! TomlToJSON()
     :%s/^\[\(\w*\)\]/\r\1.json/
     :g/\[/norm f#D
     :%s/\s*\[\(.*\)\]/"\1"/
+endfunc
+
+func! AddJsonTag()
+    :norm ^yiw$a `json:"markviwpcrs
 endfunc
