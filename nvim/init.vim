@@ -572,13 +572,25 @@ func! RunVimRun()
 	elseif &filetype == 'go'
 		set splitbelow
 		:sp
-		:term go run .
+		:term go run %
 	elseif &filetype == 'python'
 		set splitbelow
 		:sp
 		:term python3 %
 	elseif &filetype == 'markdown'
 		exec "MarkdownPreview"
+	endif
+endfunc
+
+noremap <leader>rt :call RunVimTest()<cr>
+func! RunVimTest()
+    exec "w"
+	if &filetype == 'sh'
+		:!time bash %
+    elseif &filetype == 'go'
+		set splitbelow
+		:sp
+		:term go test %
 	endif
 endfunc
 " }
