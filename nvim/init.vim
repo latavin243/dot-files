@@ -169,10 +169,6 @@ noremap t+ :tabmove +<CR>
 noremap t- :tabmove -<CR>
 " }
 
-" get next pattern in visual mode {
-xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
-xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
-
 function! s:VSetSearch()
     let temp = @s
     norm! gv"sy
@@ -217,7 +213,6 @@ call plug#begin('~/.config/nvim/plugins')
 " ===
 Plug 'bling/vim-bufferline'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'jiangmiao/auto-pairs'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
@@ -280,6 +275,9 @@ let g:NERDDefaultAlign='left'
 Plug 'RRethy/vim-illuminate' " highlight word under cursor
 " }
 
+" auto-pair brackets and quotes {
+Plug 'jiangmiao/auto-pairs'
+" }
 
 " ===
 " === filer
@@ -323,12 +321,6 @@ command! -bang -nargs=* Rg
 " tabular {
 Plug 'godlygeek/tabular'
 " }
-
-" object-after {
-Plug 'junegunn/vim-after-object'
-autocmd VimEnter * call after_object#enable('=', ':', '-', '#', ' ')
-" }
-
 
 " ===
 " === markdown
