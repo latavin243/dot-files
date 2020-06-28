@@ -38,7 +38,7 @@ set tabstop=4
 
 " appearance {
 set number
-set relativenumber
+" set relativenumber
 set textwidth=120
 set nowrap
 set scrolloff=4
@@ -297,7 +297,7 @@ let g:startify_change_to_vcs_root=1
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ShortcutF = "<leader>ff"
 let g:Lf_ReverseOrder = 1
-let g:Lf_Ctags = "universal-ctags"
+let g:Lf_Ctags = "ctags"
 nnoremap <leader>sf :Leaderf<space>rg<cr>
 " }
 
