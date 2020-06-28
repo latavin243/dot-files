@@ -489,7 +489,8 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " === language
 " ===
 " vim-go {
-Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*', 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*' }
+" Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*', 'do': ':GoUpdateBinaries' }
 let g:go_version_warning = 0
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls  =  1
@@ -521,7 +522,7 @@ Plug 'gisphm/vim-gitignore'
 " === theme
 " ===
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'vim-scripts/peaksea'
+" Plug 'vim-scripts/peaksea'
 
 " airline {
 Plug 'vim-airline/vim-airline'
@@ -531,7 +532,6 @@ let g:airline_section_b='' " vcs info
 let g:airline_section_c='' " filename
 let g:airline_section_y='' " file encoding
 " }
-
 
 " rainbow {
 Plug 'luochen1990/rainbow'
