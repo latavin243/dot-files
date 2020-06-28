@@ -613,3 +613,13 @@ func! CleanHistory()
     :g/;gd$/d
     :g/;gcof$/d
 endfunc
+
+func! TomlToJSON()
+    :set ft=json
+    :g/^$/d
+    :v/\[/norm f=r:A,
+    :v/\[/norm ^crscsw"
+    :%s/^\[\(\w*\)\]/\r\1.json/
+    :g/\[/norm f#D
+    :%s/\s*\[\(.*\)\]/"\1"/
+endfunc
