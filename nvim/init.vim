@@ -296,7 +296,12 @@ Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ShortcutF = "<leader>ff"
 let g:Lf_ReverseOrder = 1
 let g:Lf_Ctags = "ctags"
+let g:Lf_ShowDevIcons = 0
+let g:Lf_WindowPosition = 'popup'
+let g:Lf_PreviewInPopup = 1
 nnoremap <leader>sf :Leaderf<space>rg<cr>
+nnoremap <leader>lb :LeaderfBuffer<cr>
+nnoremap <leader>lf :LeaderfFunction<cr>
 " }
 
 " fzf {
