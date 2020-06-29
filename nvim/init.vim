@@ -178,9 +178,6 @@ endfunction
 " }
 
 " coding {
-" autoformat
-autocmd BufEnter *.py :set ft=python
-autocmd bufwrite *.py :Autoformat
 
 " yaml
 autocmd! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
@@ -193,6 +190,8 @@ autocmd Filetype python set foldlevel=99
 autocmd Filetype python set foldmethod=indent
 autocmd Filetype python set textwidth=120
 autocmd FileType python set colorcolumn=120
+autocmd BufEnter *.py :set ft=python
+autocmd bufwrite *.py :Autoformat
 let g:pymode_options_max_line_length=120
 " }
 
@@ -493,7 +492,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " === language
 " ===
 " vim-go {
-Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*' }
+Plug 'fatih/vim-go' , { 'for': [ 'go', 'vim' ], 'tag': '*' }
 " Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*', 'do': ':GoUpdateBinaries' }
 let g:go_version_warning = 0
 " highlights
@@ -513,13 +512,14 @@ let g:go_decls_includes = "func,type"
 let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
 let g:go_fmt_command = "gofmt"
+"linter
+let g:go_metalinter_autosave = 1
 
 nnoremap <leader>n :cnext<cr>
 nnoremap <leader>m :cprevious<cr>
 
 nnoremap gi :GoImplement<cr>
 autocmd bufenter *.go :set ft=go
-autocmd bufwrite *.go :GoMetaLinter
 autocmd! bufwrite *.go :Autoformat
 " }
 
