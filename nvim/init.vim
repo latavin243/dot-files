@@ -497,6 +497,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*' }
 " Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*', 'do': ':GoUpdateBinaries' }
 let g:go_version_warning = 0
+" highlights
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls  =  1
 let g:go_highlight_methods = 1
@@ -506,13 +507,19 @@ let g:go_highlight_build_constraints = -1
 let g:go_highlight_types  =  1
 let g:go_highlight_fields  =  1
 let g:go_highlight_extra_types = 1
-let g:go_fmt_command = "gofmt"
+
 let g:go_decls_includes = "func"
 let g:go_decls_includes = "func,type"
+
 let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
+let g:go_fmt_command = "gofmt"
+
+nnoremap <leader>n :cnext<cr>
+nnoremap <leader>m :cprevious<cr>
 
 nnoremap gi :GoImplement<cr>
+autocmd bufwrite *.go :GoMetaLinter
 " }
 
 " python-mode {
@@ -597,18 +604,21 @@ func! CleanHistory()
     :g/;ls$/d
     :g/;cd$/d
     :g/;exit$/d
-    :g/;gb$/d
+    :g/;clear$/d
 
     " vim
     :g/;vim$/d
     :g/;vimzsh$/d
     :g/;vimvim$/d
-    :g/fg/d
+    :g/;vimplugrefresh$/d
+    :g/;fg$/d
 
     " git
+    :g/;gb$/d
     :g/;gst$/d
     :g/;gd$/d
     :g/;gcof$/d
+    :g/;gup$/d
 endfunc
 
 func! TomlToJSON()
