@@ -180,8 +180,7 @@ endfunction
 " coding {
 " autoformat
 autocmd BufEnter *.py :set ft=python
-autocmd BufEnter *.go :set ft=go
-autocmd bufwrite *.{py,go} :Autoformat
+autocmd bufwrite *.py :Autoformat
 
 " yaml
 autocmd! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
@@ -519,7 +518,9 @@ nnoremap <leader>n :cnext<cr>
 nnoremap <leader>m :cprevious<cr>
 
 nnoremap gi :GoImplement<cr>
+autocmd bufenter *.go :set ft=go
 autocmd bufwrite *.go :GoMetaLinter
+autocmd! bufwrite *.go :Autoformat
 " }
 
 " python-mode {
