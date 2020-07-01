@@ -162,11 +162,11 @@ noremap <leader>q <c-w>j:q<cr>
 
 " tab {
 " Create a new tab with tu
-noremap tu :tabe<CR>
-noremap tn :tabnew<cr>
+nnoremap tu :tabe<CR>
+nnoremap tn :tabnew<cr>
 " Move the tabs with tn and ti
-noremap t+ :tabmove +<CR>
-noremap t- :tabmove -<CR>
+nnoremap t+ :tabmove +<CR>
+nnoremap t- :tabmove -<CR>
 " }
 
 function! s:VSetSearch()
@@ -291,31 +291,17 @@ let g:startify_change_to_vcs_root=1
 " ===
 " leaderf {
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
-let g:Lf_ShortcutF = "<leader>ff"
 let g:Lf_ReverseOrder = 1
 let g:Lf_Ctags = "ctags"
 let g:Lf_ShowDevIcons = 0
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
-nnoremap <leader>sf :Leaderf<space>rg<cr>
+nnoremap <leader>ll :Leaderf<space>
+nnoremap <leader>p :LeaderfFile<cr>
 nnoremap <leader>lb :LeaderfBuffer<cr>
 nnoremap <leader>lf :LeaderfFunction<cr>
-" }
-
-" fzf {
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
-
-" find file
-nnoremap <c-p> :FZF<cr>
-nnoremap <leader>p :FZF<cr>
-nnoremap <leader>rg :Rg<cr>
-command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always --smart-case '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:50%')
-  \           : fzf#vim#with_preview('right:50%', '?'),
-  \   <bang>0)
+nnoremap <leader>sf :Leaderf<space>rg<cr>
+nnoremap <leader>rg :Leaderf<space>rg<cr>
 " }
 
 " ===
@@ -492,7 +478,7 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 " === language
 " ===
 " vim-go {
-Plug 'fatih/vim-go' , { 'for': [ 'go', 'vim' ], 'tag': '*' }
+Plug 'fatih/vim-go' , { 'for': [ 'go', 'vim', 'vim-plug' ], 'tag': '*' }
 " Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*', 'do': ':GoUpdateBinaries' }
 let g:go_version_warning = 0
 " highlights
@@ -513,10 +499,11 @@ let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
 let g:go_fmt_command = "gofmt"
 "linter
-let g:go_metalinter_autosave = 1
+" let g:go_metalinter_autosave = 1
 
 nnoremap <leader>n :cnext<cr>
 nnoremap <leader>m :cprevious<cr>
+nnoremap <leader>gdb :GoDocBrowser<cr>
 
 nnoremap gi :GoImplement<cr>
 autocmd bufenter *.go :set ft=go
@@ -634,4 +621,8 @@ endfunc
 
 func! AddJsonTag()
     :norm ^yiw$a `json:"markviwpcrs
+endfunc
+
+func! DeleteRepeatRow()
+    :g/^\(.*\)$\n\1$/d
 endfunc
