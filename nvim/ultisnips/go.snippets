@@ -1,9 +1,58 @@
-snippet checke "Check Error"
+# if err
+snippet iferr "if err"
 if err != nil {
-	return err$0
+	${1:return err}
 }
 endsnippet
 
-snippet fp "Println"
-fmt.Println(${1})${0}
+# print
+snippet fp "fmt.Println"
+fmt.Println(${1:_XD_})
+$0
+endsnippet
+
+snippet print "print"
+fmt.${1:Println}(${2:_XD_})
+$0
+endsnippet
+
+# type
+snippet type "new type"
+type ${1:_XD_} ${2:struct} {
+	${3:_XD_}
+}
+endsnippet
+
+# main
+snippet main "main template"
+package main
+
+func main() {
+	$0
+}
+endsnippet
+
+# function
+snippet func "function"
+func ${1:_XD_}(${1:_XD_}) (${3:_XD_}) {
+	$0
+}
+endsnippet
+
+# switch
+snippet switch "switch"
+switch ${1:_XD_} {
+	case ${2:_XD_}:
+		${3:_XD_}
+	default:
+		${4:_XD_}
+}
+$0
+endsnippet
+
+# for
+snippet for "for"
+for ${1:_}, ${2:_XD_} := range ${3:_XD_} {
+	$0
+}
 endsnippet

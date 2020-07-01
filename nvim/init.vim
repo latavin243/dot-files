@@ -467,9 +467,10 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
-let g:UltiSnipsExpandTrigger="<c-f>"
-let g:UltiSnipsJumpForwardTrigger="<c-f>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+inoremap <c-i> <nop>
+let g:UltiSnipsExpandTrigger="<c-o>"
+let g:UltiSnipsJumpForwardTrigger="<c-o>"
+let g:UltiSnipsJumpBackwardTrigger="<c-i>"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/', 'ultisnips']
 " }
 
