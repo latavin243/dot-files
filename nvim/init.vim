@@ -626,3 +626,5 @@ endfunc
 func! DeleteRepeatRow()
     :g/^\(.*\)$\n\1$/d
 endfunc
+
+nnoremap <leader>d :sp<cr>:term curl https://d.supjohn.com/<c-r><c-w><cr><esc>
