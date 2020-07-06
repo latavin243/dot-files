@@ -284,6 +284,7 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir=0
 let g:startify_change_to_vcs_root=1
+autocmd filetype startify set cursorline
 " }
 
 " ===
@@ -366,7 +367,15 @@ nmap ga <Plug>(EasyAlign)
 " coc {
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-let g:coc_global_extensions = ['coc-python', 'coc-vimlsp', 'coc-json', 'coc-yank', 'coc-lists', 'coc-gitignore', 'coc-json', 'coc-explorer']
+let g:coc_global_extensions = [
+    \'coc-explorer',
+    \'coc-gitignore',
+    \'coc-json',
+    \'coc-lists',
+    \'coc-python',
+    \'coc-vimlsp',
+    \'coc-yank',
+\]
 
 " Trigger completion.
 inoremap <silent><expr> <c-q> coc#refresh()
