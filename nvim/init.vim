@@ -505,17 +505,21 @@ let g:go_decls_includes = "func,type"
 
 let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
-let g:go_fmt_command = "gofmt"
-"linter
-" let g:go_metalinter_autosave = 1
+let g:go_fmt_command = "gopls"
+let g:go_fmt_experimental = 1
+
+" linter
+let g:go_metalinter_autosave = 1
 
 nnoremap <leader>n :cnext<cr>
 nnoremap <leader>m :cprevious<cr>
 nnoremap <leader>gdb :GoDocBrowser<cr>
 
 nnoremap gi :GoImplement<cr>
+autocmd filetype go set foldmethod=syntax foldnestmax=1
 autocmd bufenter *.go :set ft=go
 autocmd! bufwrite *.go :Autoformat
+" autocmd bufwritepost *.go :normal! zv
 " }
 
 " python-mode {
