@@ -77,7 +77,7 @@ set wildmode=longest,list,full
 
 " key mappings {
 " noremap s <nop>
-noremap Q <nop>
+nnoremap Q :q<cr>
 
 " buffer
 nnoremap <silent> [b :bprevious<CR>
@@ -221,6 +221,9 @@ Plug 'Yggdroot/indentLine'
 Plug 'chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-expand-region'
+
+" buffer only
+Plug 'latavin243/BufOnly.vim'
 " show mark
 " Plug 'kshenoy/vim-signature'
 
@@ -229,9 +232,11 @@ Plug 'junegunn/vim-peekaboo'
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
-" nmap ss <Plug>(easymotion-s2)
-nmap ff <Plug>(easymotion-s2)
+nmap ff <plug>(easymotion-jumptoanywhere)
+nmap ss <plug>(easymotion-s2)
+nmap sn <plug>(easymotion-sn)
 let g:EasyMotion_smartcase=1
+let g:EasyMotion_keys = 'fjdkswbeoavn'
 " }
 
 " guentags {
@@ -505,19 +510,19 @@ let g:go_decls_includes = "func,type"
 
 let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
-let g:go_fmt_command = "gopls"
+let g:go_fmt_command = "gofmt"
 let g:go_fmt_experimental = 1
 
 " linter
-let g:go_metalinter_autosave = 1
+" let g:go_metalinter_autosave = 0
 
 nnoremap <leader>n :cnext<cr>
 nnoremap <leader>m :cprevious<cr>
 nnoremap <leader>gdb :GoDocBrowser<cr>
 
 nnoremap gi :GoImplement<cr>
-autocmd filetype go set foldmethod=syntax foldnestmax=1
 autocmd bufenter *.go :set ft=go
+" autocmd filetype go set foldmethod=syntax foldnestmax=1
 autocmd! bufwrite *.go :Autoformat
 " autocmd bufwritepost *.go :normal! zv
 " }
@@ -639,4 +644,4 @@ func! DeleteRepeatRow()
     :g/^\(.*\)$\n\1$/d
 endfunc
 
-nnoremap <leader>d :sp<cr>:term curl https://d.supjohn.com/<c-r><c-w><cr><esc>
+nnoremap <leader>d :set splitbelow<cr>:sp<cr>:term curl https://d.supjohn.com/<c-r><c-w><cr><esc>
