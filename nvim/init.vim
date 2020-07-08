@@ -645,3 +645,7 @@ func! DeleteRepeatRow()
 endfunc
 
 nnoremap <leader>d :set splitbelow<cr>:sp<cr>:term curl https://d.supjohn.com/<c-r><c-w><cr><esc>
+
+func! AddSplitLine()
+    :t. | norm Vr=
+endfunc
