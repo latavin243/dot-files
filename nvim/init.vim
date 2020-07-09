@@ -222,8 +222,12 @@ Plug 'chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-expand-region'
 
+" custom {
 " buffer only
 Plug 'latavin243/BufOnly.vim'
+Plug 'latavin243/searchit.vim'
+" }
+
 " show mark
 " Plug 'kshenoy/vim-signature'
 
