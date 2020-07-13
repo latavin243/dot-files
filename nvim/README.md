@@ -30,3 +30,8 @@ vim +PlugInstall +qa
 ```
 pip install pynvim
 ```
+
+2. No fanyi command
+```
+npm install fanyi -g
+```

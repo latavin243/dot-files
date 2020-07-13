@@ -648,7 +648,8 @@ func! DeleteRepeatRow()
     :g/^\(.*\)$\n\1$/d
 endfunc
 
-nnoremap <leader>d :set splitbelow<cr>:sp<cr>:term curl https://d.supjohn.com/<c-r><c-w><cr><esc>
+" nnoremap <leader>d :set splitbelow<cr>:sp<cr>:term curl https://d.supjohn.com/<c-r><c-w><cr><esc>
+nnoremap <leader>d :set splitbelow<cr>:sp<cr>:term fanyi <c-r><c-w><cr><esc>
 
 func! AddSplitLine()
     :t. | norm Vr=
