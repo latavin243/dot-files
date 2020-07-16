@@ -91,6 +91,9 @@ nnoremap <c-j> <c-w>j
 nnoremap <c-k> <c-w>k
 nnoremap <c-l> <c-w>l
 
+" quick ft
+nnoremap <leader>ft :set ft=
+
 " disable some mappings
 " map <c-b> <nop>
 " map <c-f> <nop>
