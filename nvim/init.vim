@@ -251,15 +251,15 @@ let g:EasyMotion_keys = 'fjdkswbeoavn'
 " }
 
 " guentags {
-Plug 'ludovicchabant/vim-gutentags'
-let g:gutentags_project_root = ['.git','.project']
-let g:gutentags_ctags_tagfile = '.tags'
-let s:vim_tags = expand('~/.config/nvim/cache/gutentags')
-let g:gutentags_cache_dir = s:vim_tags
-if !isdirectory(s:vim_tags)
-    silent! call mkdir(s:vim_tags, 'p')
-endif
-let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
+" Plug 'ludovicchabant/vim-gutentags'
+" let g:gutentags_project_root = ['.git','.project']
+" let g:gutentags_ctags_tagfile = '.tags'
+" let s:vim_tags = expand('~/.config/nvim/cache/gutentags')
+" let g:gutentags_cache_dir = s:vim_tags
+" if !isdirectory(s:vim_tags)
+"     silent! call mkdir(s:vim_tags, 'p')
+" endif
+" let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
 " }
 
 " ale: linting {
@@ -603,9 +603,7 @@ func! RunVimRun()
 	if &filetype == 'sh'
 		:!time bash %
 	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run %
+		:GoRun
 	elseif &filetype == 'python'
 		set splitbelow
 		:sp
@@ -621,9 +619,7 @@ func! RunVimTest()
 	if &filetype == 'sh'
 		:!time bash %
     elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go test %
+		:GoTest
 	endif
 endfunc
 " }
