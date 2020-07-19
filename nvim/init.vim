@@ -229,6 +229,10 @@ Plug 'terryma/vim-expand-region'
 " buffer only
 Plug 'latavin243/BufOnly.vim'
 Plug 'latavin243/searchit.vim'
+nnoremap sg :Searchit google<space>
+nnoremap sso :Searchit stackoverflow<space>
+nnoremap <leader>st :Searchit<space>
+nnoremap <leader>sgo :Searchit go <c-r><c-w><cr>
 " }
 
 " show mark
@@ -302,6 +306,10 @@ autocmd filetype startify set cursorline
 " ===
 " === search
 " ===
+
+" fzf
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+
 " leaderf {
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ReverseOrder = 1
