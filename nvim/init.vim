@@ -540,6 +540,15 @@ autocmd bufenter *.go :set ft=go
 " autocmd filetype go set foldmethod=syntax foldnestmax=1
 autocmd! bufwrite *.go :Autoformat
 " autocmd bufwritepost *.go :normal! zv
+
+augroup go
+    autocmd!
+    autocmd filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+    autocmd filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+    autocmd filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+augroup END
+
+
 " }
 
 " python-mode {
