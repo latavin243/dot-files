@@ -599,28 +599,28 @@ endif
 " run vim run {
 noremap <leader>rr :call RunVimRun()<CR>
 func! RunVimRun()
-	exec "w"
-	if &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'go'
-		:GoRun
-	elseif &filetype == 'python'
-		set splitbelow
-		:sp
-		:term python3 %
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
-	endif
+    :w
+    if &filetype == 'sh'
+        :!time bash %
+    elseif &filetype == 'go'
+        :GoRun
+    elseif &filetype == 'python'
+        set splitbelow
+        :sp
+        :term python3 %
+    elseif &filetype == 'markdown'
+        exec "MarkdownPreview"
+    endif
 endfunc
 
 noremap <leader>rt :call RunVimTest()<cr>
 func! RunVimTest()
-    exec "w"
-	if &filetype == 'sh'
-		:!time bash %
+    :w
+    if &filetype == 'sh'
+        :!time bash %
     elseif &filetype == 'go'
-		:GoTest
-	endif
+        :GoTest
+    endif
 endfunc
 " }
 
