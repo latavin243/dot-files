@@ -76,7 +76,7 @@ set wildmode=longest,list,full
 " }
 
 " key mappings {
-" noremap s <nop>
+" nnoremap s <nop>
 nnoremap Q :q<cr>
 
 " buffer
@@ -229,8 +229,8 @@ Plug 'terryma/vim-expand-region'
 " buffer only
 Plug 'latavin243/BufOnly.vim'
 Plug 'latavin243/searchit.vim'
-nnoremap sg :Searchit google<space>
-nnoremap sso :Searchit stackoverflow<space>
+nnoremap <leader>sg :Searchit google<space>
+" nnoremap <leader>sso :Searchit stackoverflow<space>
 nnoremap <leader>st :Searchit<space>
 nnoremap <leader>sgo :Searchit go <c-r><c-w><cr>
 " }
@@ -243,9 +243,9 @@ Plug 'junegunn/vim-peekaboo'
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
-nmap ff <plug>(easymotion-jumptoanywhere)
-nmap ss <plug>(easymotion-s2)
-nmap sn <plug>(easymotion-sn)
+nmap <leader>ff <plug>(easymotion-jumptoanywhere)
+nmap <leader>ss <plug>(easymotion-s2)
+nmap <leader>sn <plug>(easymotion-sn)
 let g:EasyMotion_smartcase=1
 let g:EasyMotion_keys = 'fjdkswbeoavn'
 " }
@@ -530,7 +530,7 @@ let g:go_fmt_command = "gofmt"
 let g:go_fmt_experimental = 1
 
 " linter
-" let g:go_metalinter_autosave = 0
+" let g:go_metalinter_autosave = 1
 
 nnoremap <leader>n :cnext<cr>
 nnoremap <leader>m :cprevious<cr>
@@ -554,10 +554,6 @@ augroup END
 
 " python-mode {
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
-" }
-
-" gitignore {
-Plug 'gisphm/vim-gitignore'
 " }
 
 " ===
@@ -621,6 +617,14 @@ func! RunVimTest()
         :!time bash %
     elseif &filetype == 'go'
         :GoTest
+    endif
+endfunc
+
+noremap <leader>rl :call RunVimLint()<cr>
+func! RunVimLint()
+    :w
+    if &filetype == 'go'
+        :GoMetaLinter
     endif
 endfunc
 " }
