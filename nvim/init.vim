@@ -235,6 +235,17 @@ nnoremap <leader>st :Searchit<space>
 nnoremap <leader>sgo :Searchit go <c-r><c-w><cr>
 " }
 
+" ranger {
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
+nnoremap <leader>ra :RangerWorkingDirectoryNewTab<CR>
+" }
+
+" tmux {
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
+" }
+
 " show mark
 " Plug 'kshenoy/vim-signature'
 
