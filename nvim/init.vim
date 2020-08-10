@@ -184,7 +184,7 @@ endfunction
 
 " yaml
 autocmd! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
-autocmd! FileType yaml set ts=2 sts=2 sw=2 nosi noai
+autocmd! FileType yaml set ts=2 sts=2 sw=2 nosi noai expandtab
 
 " python
 let python_highlight_all=1
@@ -224,6 +224,11 @@ Plug 'Yggdroot/indentLine'
 Plug 'chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-expand-region'
+
+" narrow region {
+Plug 'chrisbra/nrrwrgn'
+let g:nrrw_rgn_vert = 1
+" }
 
 " custom {
 " buffer only
