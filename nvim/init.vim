@@ -390,15 +390,6 @@ nmap ga <Plug>(EasyAlign)
 " }
 
 " ===
-" === entertainment
-" ===
-" comfortable-motion {
-"Plug 'yuttie/comfortable-motion.vim'
-"let g:comfortable_motion_scroll_down_key = "j"
-"let g:comfortable_motion_scroll_up_key = "k"
-" }
-
-" ===
 " === autocomplete
 " ===
 " coc {
@@ -632,7 +623,10 @@ func! RunVimTest()
     if &filetype == 'sh'
         :!time bash %
     elseif &filetype == 'go'
-        :GoTest
+        " :GoTest
+        set splitbelow
+        :sp
+        :term go test %
     endif
 endfunc
 
