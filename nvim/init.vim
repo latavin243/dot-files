@@ -396,6 +396,7 @@ nmap ga <Plug>(EasyAlign)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
+    \'coc-actions',
     \'coc-explorer',
     \'coc-gitignore',
     \'coc-json',
@@ -425,6 +426,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nnoremap <c-e> :CocCommand explorer<cr>
+nnoremap <c-c> :CocCommand<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -626,7 +628,7 @@ func! RunVimTest()
         " :GoTest
         set splitbelow
         :sp
-        :term go test %
+        :term go test -v %
     endif
 endfunc
 
