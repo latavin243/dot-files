@@ -227,7 +227,8 @@ Plug 'terryma/vim-expand-region'
 
 " narrow region {
 Plug 'chrisbra/nrrwrgn'
-let g:nrrw_rgn_vert = 1
+let g:nrrw_rgn_vert = 0
+let g:nrrw_rgn_wdth = 80
 " }
 
 " custom {
@@ -404,6 +405,7 @@ let g:coc_global_extensions = [
     \'coc-python',
     \'coc-vimlsp',
     \'coc-yank',
+    \'coc-floaterm',
 \]
 
 " Trigger completion.
