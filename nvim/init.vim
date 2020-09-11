@@ -587,6 +587,10 @@ Plug 'luochen1990/rainbow'
 let g:rainbow_active=1
 " }
 
+" date calculation {
+Plug 'tpope/vim-speeddating'
+" }
+
 call plug#end()
 " }
 
@@ -689,3 +693,5 @@ nnoremap <leader>d :set splitbelow<cr>:sp<cr>:term fanyi <c-r><c-w>
 func! AddSplitLine()
     :t. | norm Vr=
 endfunc
+
+command! -nargs=+ WrapBy execute '.substitute/' . split(<q-args>,' ')[0] . '/&\r/g'
