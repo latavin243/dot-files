@@ -186,6 +186,9 @@ endfunction
 autocmd! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
 autocmd! FileType yaml set ts=2 sts=2 sw=2 nosi noai expandtab
 
+" json
+autocmd! FileType json set ts=2 sts=2 sw=2 nosi noai expandtab
+
 " python
 let python_highlight_all=1
 autocmd Filetype python set fileformat=unix
@@ -195,7 +198,6 @@ autocmd Filetype python set textwidth=120
 autocmd FileType python set colorcolumn=120
 autocmd BufEnter *.py :set ft=python
 autocmd bufwrite *.py :Autoformat
-let g:pymode_options_max_line_length=120
 " }
 
 " short for command {
@@ -227,8 +229,8 @@ Plug 'terryma/vim-expand-region'
 
 " narrow region {
 Plug 'chrisbra/nrrwrgn'
-let g:nrrw_rgn_vert = 0
-let g:nrrw_rgn_wdth = 80
+let g:nrrw_rgn_vert = 1
+let g:nrrw_rgn_wdth = 120
 " }
 
 " custom {
@@ -427,7 +429,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-nnoremap <c-e> :CocCommand explorer<cr>
+nnoremap <leader>e :CocCommand explorer<cr>
 nnoremap <c-c> :CocCommand<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -494,10 +496,10 @@ xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
 command! -nargs=0 Format :call CocAction('format')
 
 " Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
 
 " use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
@@ -541,6 +543,19 @@ let g:go_fmt_command = "gofmt"
 let g:go_fmt_experimental = 1
 
 " linter
+let g:go_metalinter_enabled = [
+    \'deadcode',
+    \'errcheck',
+    \'gosimple',
+    \'vet',
+    \'golint',
+    \'staticcheck',
+    \'typecheck',
+    \'unused',
+    \'varcheck',
+\]
+let g:go_metalinter_command = "golangci-lint run"
+let g:go_metalinter_deadline = "5s"
 " let g:go_metalinter_autosave = 1
 
 nnoremap <leader>n :cnext<cr>
@@ -565,6 +580,7 @@ augroup END
 
 " python-mode {
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+let g:pymode_options_max_line_length=120
 " }
 
 " ===
