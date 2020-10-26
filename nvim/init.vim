@@ -9,7 +9,7 @@
 " author: @latavin243
 
 " basic settings {{{
-let mapleader=' '
+let mapleader=','
 
 syntax enable
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
@@ -85,11 +85,19 @@ nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
-" split window jump
-nnoremap <c-h> <c-w>h
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-l> <c-w>l
+" " split window jump
+nnoremap <c-h> <nop>
+nnoremap <c-j> <nop>
+nnoremap <c-k> <nop>
+nnoremap <c-l> <nop>
+" nnoremap <c-h> <c-w>h
+" nnoremap <c-j> <c-w>j
+" nnoremap <c-k> <c-w>k
+" nnoremap <c-l> <c-w>l
+
+" quick scroll
+nnoremap <c-e> 2<c-e>
+nnoremap <c-y> 2<c-y>
 
 " quick ft
 nnoremap <leader>ft :set ft=
@@ -262,7 +270,6 @@ Plug 'junegunn/vim-peekaboo'
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
-nmap <leader>ff <plug>(easymotion-jumptoanywhere)
 nmap <leader>ss <plug>(easymotion-s2)
 nmap <leader>sn <plug>(easymotion-sn)
 let g:EasyMotion_smartcase=1
@@ -320,6 +327,7 @@ Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir=0
 let g:startify_change_to_vcs_root=1
 let g:startify_session_dir='~/.vim/sessions'
+let g:startify_files_number=20
 autocmd filetype startify set cursorline
 " }
 
@@ -338,11 +346,15 @@ let g:Lf_ShowDevIcons = 0
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
 nnoremap <leader>ll :Leaderf<space>
-nnoremap <leader>p :LeaderfFile<cr>
-nnoremap <leader>lb :LeaderfBuffer<cr>
+nnoremap <leader>ff :LeaderfFile<cr>
+nnoremap <leader>bb :LeaderfBuffer<cr>
 nnoremap <leader>lf :LeaderfFunction<cr>
 nnoremap <leader>sf :Leaderf<space>rg<cr>
 nnoremap <leader>rg :Leaderf<space>rg<cr>
+let g:Lf_CommandMap = {
+\   '<C-k>': ['<C-p>'],
+\   '<C-j>': ['<C-n>'],
+\}
 " }
 
 " ===
@@ -429,7 +441,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
-nnoremap <leader>e :CocCommand explorer<cr>
+nnoremap <leader>ee :CocCommand explorer<cr>
 nnoremap <c-c> :CocCommand<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
@@ -588,6 +600,7 @@ let g:pymode_options_max_line_length=120
 " ===
 Plug 'NLKNguyen/papercolor-theme'
 " Plug 'vim-scripts/peaksea'
+Plug 'srcery-colors/srcery-vim'
 
 " airline {
 Plug 'vim-airline/vim-airline'
@@ -611,7 +624,9 @@ call plug#end()
 " }
 
 " theme {
-colorscheme PaperColor
+" colorscheme PaperColor
+set t_Co=256
+colorscheme srcery
 set background=dark
 
 " transparent

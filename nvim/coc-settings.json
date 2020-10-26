@@ -1,97 +1,105 @@
 {
-    "json.format.enable": true,
-    "coc-actions.hideCursor": false,
-    "coc-actions.showActionKind": true,
-    "suggest.detailMaxLength": 60,
-    "suggest.noselect": true,
-    "suggest.enablePreselect": false,
-    "suggest.triggerAfterInsertEnter": false,
-    "suggest.timeout": 5000,
-    "suggest.enablePreview": true,
-    "suggest.floatEnable": true,
-    "suggest.detailField": "preview",
-    "suggest.snippetIndicator": "",
-    "suggest.triggerCompletionWait": 100,
-    "suggest.echodocSupport": true,
-    "explorer.width": 40,
-    "explorer.quitOnOpen": true,
-    "explorer.keyMappings": {
-        "k": "nodePrev",
-        "j": "nodeNext",
-        "gk": "expandablePrev",
-        "gj": "expandableNext",
-        "*": "toggleSelection",
-        "<tab>": "actionMenu",
-        "h": "collapse",
-        "l": [
-            "expandable?",
-            "expand",
-            "open"
-        ],
-        "J": [
-            "toggleSelection",
-            "nodeNext"
-        ],
-        "K": [
-            "toggleSelection",
-            "nodePrev"
-        ],
-        "gl": "expandRecursive",
-        "gh": "collapseRecursive",
-        "o": "expandOrCollapse",
-        "<cr>": [
-            "expandable?",
-            "cd",
-            "open"
-        ],
-        "e": "open",
-        "s": "open:vsplit",
-        "S": "open:split",
-        "t": "open:tab",
-        "<bs>": "gotoParent",
-        "gp": "preview:labeling",
-        "y": "copyFilepath",
-        "Y": "copyFilename",
-        "c": "copyFile",
-        "x": "cutFile",
-        "p": "pasteFile",
-        "d": "delete",
-        "D": "deleteForever",
-        "a": "addFile",
-        "A": "addDirectory",
-        "r": "rename",
-        ".": "toggleHidden",
-        "R": "refresh",
-        "?": "help",
-        "q": "quit",
-        "<esc>": "esc",
-        "X": "systemExecute",
-        "gd": "listDrive",
-        "f": "search",
-        "F": "searchRecursive",
-        "gf": "gotoSource:file",
-        "gb": "gotoSource:buffer",
-        "[[": "sourcePrev",
-        "]]": "sourceNext",
-        "[d": "diagnosticPrev",
-        "]d": "diagnosticNext"
+  "json.format.enable": true,
+  "coc-actions.hideCursor": false,
+  "coc-actions.showActionKind": true,
+  "suggest.detailMaxLength": 60,
+  "suggest.noselect": true,
+  "suggest.enablePreselect": false,
+  "suggest.triggerAfterInsertEnter": false,
+  "suggest.timeout": 5000,
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
+  "suggest.detailField": "preview",
+  "suggest.snippetIndicator": "",
+  "suggest.triggerCompletionWait": 100,
+  "suggest.echodocSupport": true,
+  "diagnostic.refreshOnInsertMode": false,
+  "diagnostic.refreshAfterSave": false,
+  "diagnostic.checkCurrentLine": true,
+  "codeLens.enable": true,
+  "explorer.width": 40,
+  "explorer.quitOnOpen": true,
+  "explorer.keyMappings": {
+    "k": "nodePrev",
+    "j": "nodeNext",
+    "gk": "expandablePrev",
+    "gj": "expandableNext",
+    "*": "toggleSelection",
+    "<tab>": "actionMenu",
+    "h": "collapse",
+    "l": [
+      "expandable?",
+      "expand",
+      "open"
+    ],
+    "J": [
+      "toggleSelection",
+      "nodeNext"
+    ],
+    "K": [
+      "toggleSelection",
+      "nodePrev"
+    ],
+    "gl": "expandRecursive",
+    "gh": "collapseRecursive",
+    "o": "expandOrCollapse",
+    "<cr>": [
+      "expandable?",
+      "cd",
+      "open"
+    ],
+    "e": "open",
+    "s": "open:vsplit",
+    "S": "open:split",
+    "t": "open:tab",
+    "<bs>": "gotoParent",
+    "gp": "preview:labeling",
+    "y": "copyFilepath",
+    "Y": "copyFilename",
+    "c": "copyFile",
+    "x": "cutFile",
+    "p": "pasteFile",
+    "d": "delete",
+    "D": "deleteForever",
+    "a": "addFile",
+    "A": "addDirectory",
+    "r": "rename",
+    ".": "toggleHidden",
+    "R": "refresh",
+    "?": "help",
+    "q": "quit",
+    "<esc>": "esc",
+    "X": "systemExecute",
+    "gd": "listDrive",
+    "f": "search",
+    "F": "searchRecursive",
+    "gf": "gotoSource:file",
+    "gb": "gotoSource:buffer",
+    "[[": "sourcePrev",
+    "]]": "sourceNext",
+    "[d": "diagnosticPrev",
+    "]d": "diagnosticNext"
+  },
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ],
+      "ignoredRootPaths": []
     },
-    "languageserver": {
-        "golang": {
-            "command": "gopls",
-            "rootPatterns": [
-                "go.mod",
-                ".git"
-            ],
-            "filetypes": [
-                "go"
-            ],
-            "initializationOptions": {
-                "gocodeCompletionEnabled": true,
-                "diagnosticsEnabled": false,
-                "lintTool": "golint",
-                "formatTool": "golint"
-            }
-        }
+    "golang": {
+      "command": "gopls",
+      "rootPatterns": [
+        "go.mod",
+        ".git"
+      ],
+      "filetypes": [
+        "go"
+      ]
     }
+  }
 }
