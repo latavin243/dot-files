@@ -1,5 +1,6 @@
 {
   "json.format.enable": true,
+  "yaml.format.enable": true,
   "coc-actions.hideCursor": false,
   "coc-actions.showActionKind": true,
   "suggest.detailMaxLength": 60,
@@ -13,9 +14,17 @@
   "suggest.snippetIndicator": "",
   "suggest.triggerCompletionWait": 100,
   "suggest.echodocSupport": true,
+  "diagnostic.signOffset": 1,
+  "diagnostic.errorSign": "ERR",
+  "diagnostic.warningSign": "WARN",
+  "diagnostic.infoSign": "INFO",
+  "diagnostic.hintSign": "HINT",
+  "diagnostic.displayByAle": false,
   "diagnostic.refreshOnInsertMode": false,
   "diagnostic.refreshAfterSave": false,
   "diagnostic.checkCurrentLine": true,
+  "diagnostic.virtualTextPrefix": " >>> ",
+  "diagnostic.virtualText": true,
   "codeLens.enable": true,
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
@@ -23,7 +32,7 @@
   ],
   "explorer.width": 40,
   "explorer.quitOnOpen": true,
-  "explorer.keyMappings": {
+  "explorer.keyMappings.global": {
     "k": "nodePrev",
     "j": "nodeNext",
     "gk": "expandablePrev",

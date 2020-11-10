@@ -420,6 +420,7 @@ let g:coc_global_extensions = [
     \'coc-vimlsp',
     \'coc-yank',
     \'coc-floaterm',
+    \'coc-yaml',
 \]
 
 " Trigger completion.
@@ -442,7 +443,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nnoremap <leader>ee :CocCommand explorer<cr>
-nnoremap <c-c> :CocCommand<CR>
+" nnoremap <c-c> :CocCommand<CR>
 
 " Use tab for trigger completion with characters ahead and navigate.
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
@@ -619,6 +620,9 @@ let g:rainbow_active=1
 " date calculation {
 Plug 'tpope/vim-speeddating'
 " }
+
+" wildfire, expand region
+Plug 'gcmt/wildfire.vim'
 
 call plug#end()
 " }
