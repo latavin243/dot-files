@@ -1,6 +1,5 @@
 {
   "json.format.enable": true,
-  "yaml.format.enable": true,
   "coc-actions.hideCursor": false,
   "coc-actions.showActionKind": true,
   "suggest.detailMaxLength": 60,

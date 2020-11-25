@@ -86,10 +86,10 @@ nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
 " " split window jump
-nnoremap <c-h> <nop>
-nnoremap <c-j> <nop>
-nnoremap <c-k> <nop>
-nnoremap <c-l> <nop>
+" nnoremap <c-h> <nop>
+" nnoremap <c-j> <nop>
+" nnoremap <c-k> <nop>
+" nnoremap <c-l> <nop>
 " nnoremap <c-h> <c-w>h
 " nnoremap <c-j> <c-w>j
 " nnoremap <c-k> <c-w>k
@@ -224,7 +224,6 @@ call plug#begin('~/.config/nvim/plugins')
 " ===
 Plug 'bling/vim-bufferline'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
@@ -317,6 +316,15 @@ Plug 'RRethy/vim-illuminate' " highlight word under cursor
 
 " auto-pair brackets and quotes {
 Plug 'jiangmiao/auto-pairs'
+" }
+
+" multi-cursor {
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+let g:VM_maps = {}
+let g:VM_maps['Find Under']         = '<leader>mc' " replace C-n
+let g:VM_maps['Find Subword Under'] = '<leader>mc' " replace visual C-n
+let g:VM_maps["Select Cursor Down"] = '<M-C-j>'    " start selecting down
+let g:VM_maps["Select Cursor Up"]   = '<M-C-k>'    " start selecting up
 " }
 
 " ===
@@ -415,6 +423,7 @@ let g:coc_global_extensions = [
     \'coc-explorer',
     \'coc-gitignore',
     \'coc-json',
+    \'coc-prettier',
     \'coc-lists',
     \'coc-python',
     \'coc-vimlsp',
