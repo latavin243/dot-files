@@ -128,10 +128,10 @@ nnoremap <leader>wp :set wrap<cr>
 " open terminal below
 noremap <leader>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
-" customize placeholder _XD_
-" nnoremap <leader><c-t> a_XD_<esc>
-nnoremap <leader><c-t> b/_XD_<cr>:nohl<cr>"_c4l
-inoremap <c-t> <esc>/_XD_<cr>:nohl<cr>"_c4l
+" customize placeholder _TODO_
+" nnoremap <leader><c-t> a_TODO_<esc>
+nnoremap <leader><c-t> b/_TODO_<cr>:nohl<cr>"_c4l
+inoremap <c-t> <esc>/_TODO_<cr>:nohl<cr>"_c4l
 
 " todo placeholder `TODO`
 nnoremap <leader>to /TODO<cr>:nohl<cr>v$h
@@ -238,6 +238,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'chrisbra/nrrwrgn'
 let g:nrrw_rgn_vert = 1
 let g:nrrw_rgn_wdth = 120
+let g:nrrw_topbot_leftright = 'botright'
 " }
 
 " custom {
@@ -538,6 +539,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-o><c-o>"
 let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/', 'ultisnips']
 " }
 
+" spell check (camelcase spell check)
+Plug 'kamykn/spelunker.vim'
+
 " ===
 " === language
 " ===
@@ -555,6 +559,7 @@ let g:go_highlight_build_constraints = -1
 let g:go_highlight_types  =  1
 let g:go_highlight_fields  =  1
 let g:go_highlight_extra_types = 1
+let g:go_highlight_string_spellcheck = 1
 
 let g:go_decls_includes = "func"
 let g:go_decls_includes = "func,type"
