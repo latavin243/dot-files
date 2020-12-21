@@ -744,3 +744,7 @@ func! AddSplitLine()
 endfunc
 
 command! -nargs=+ WrapBy execute '.substitute/' . split(<q-args>,' ')[0] . '/&\r/g'
+
+func! AddEnum(n)
+    :for i in range(1,a:n) | put =i | endfor
+endfunc
