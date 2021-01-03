@@ -344,9 +344,6 @@ autocmd filetype startify set cursorline
 " === search
 " ===
 
-" fzf
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
 " leaderf {
 Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
 let g:Lf_ReverseOrder = 1
@@ -431,6 +428,7 @@ let g:coc_global_extensions = [
     \'coc-yank',
     \'coc-floaterm',
     \'coc-yaml',
+    \'coc-diagnostic',
 \]
 
 " Trigger completion.
@@ -529,6 +527,12 @@ set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " }
 
+" coc-fzf
+Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
+Plug 'junegunn/fzf.vim' " needed for previews
+Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
+nnoremap <silent> <leader>xx :<c-u>CocFzfList<cr>
+
 " untisnips & vim-snippets {
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -541,6 +545,7 @@ let g:UltiSnipsSnippetDirectories = [$HOME.'/.config/nvim/ultisnips/', 'ultisnip
 
 " spell check (camelcase spell check)
 Plug 'kamykn/spelunker.vim'
+Plug 'kamykn/popup-menu.nvim'
 
 " ===
 " === language
