@@ -130,8 +130,9 @@ noremap <leader>/ :set splitbelow<CR>:sp<CR>:term<CR>
 
 " customize placeholder _TODO_
 " nnoremap <leader><c-t> a_TODO_<esc>
-nnoremap <leader><c-t> b/_TODO_<cr>:nohl<cr>"_c4l
-inoremap <c-t> <esc>/_TODO_<cr>:nohl<cr>"_c4l
+nnoremap <leader><c-t> b/_TODO_<cr>:nohl<cr>"_c6l
+nnoremap <leader>tt b/_TODO_<cr>:nohl<cr>"_c6l
+inoremap <c-t> <esc>/_TODO_<cr>:nohl<cr>"_c6l
 
 " todo placeholder `TODO`
 nnoremap <leader>to /TODO<cr>:nohl<cr>v$h
@@ -197,7 +198,7 @@ autocmd! FileType yaml set ts=2 sts=2 sw=2 nosi noai expandtab
 " json
 autocmd! FileType json set ts=2 sts=2 sw=2 nosi noai expandtab
 
-" python
+" python {
 let python_highlight_all=1
 autocmd Filetype python set fileformat=unix
 autocmd Filetype python set foldlevel=99
@@ -206,6 +207,10 @@ autocmd Filetype python set textwidth=120
 autocmd FileType python set colorcolumn=120
 autocmd BufEnter *.py :set ft=python
 autocmd bufwrite *.py :Autoformat
+" }
+
+" csv {
+autocmd! InsertLeave *.{csv} Tabularize /,
 " }
 
 " short for command {
@@ -354,7 +359,7 @@ let g:Lf_PreviewInPopup = 1
 nnoremap <leader>ll :Leaderf<space>
 nnoremap <leader>ff :LeaderfFile<cr>
 nnoremap <leader>bb :LeaderfBuffer<cr>
-nnoremap <leader>lf :LeaderfFunction<cr>
+" nnoremap <leader>lf :LeaderfFunction<cr>
 nnoremap <leader>sf :Leaderf<space>rg<cr>
 nnoremap <leader>rg :Leaderf<space>rg<cr>
 let g:Lf_CommandMap = {
@@ -423,7 +428,7 @@ let g:coc_global_extensions = [
     \'coc-json',
     \'coc-prettier',
     \'coc-lists',
-    \'coc-python',
+    \'coc-pyright',
     \'coc-vimlsp',
     \'coc-yank',
     \'coc-floaterm',
@@ -508,7 +513,7 @@ xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
-" Use <tab> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+" Use <tab> for select selections ranges, needs server support, like: coc-tsserver
 " nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <S-TAB> <Plug>(coc-range-select-backword)
@@ -532,6 +537,9 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
 Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 nnoremap <silent> <leader>xx :<c-u>CocFzfList<cr>
+nnoremap <silent> <leader>lf :<c-u>CocFzfList outline<cr>
+nnoremap <silent> <leader>df :<c-u>CocFzfList diagnostics<cr>
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
 
 " untisnips & vim-snippets {
 Plug 'SirVer/ultisnips'
@@ -586,7 +594,7 @@ let g:go_metalinter_enabled = [
     \'unused',
     \'varcheck',
 \]
-let g:go_metalinter_command = "golangci-lint run"
+let g:go_metalinter_command = "golangci-lint run %"
 let g:go_metalinter_deadline = "5s"
 " let g:go_metalinter_autosave = 1
 
@@ -606,8 +614,6 @@ augroup go
     autocmd filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
     autocmd filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 augroup END
-
-
 " }
 
 " python-mode {
@@ -737,7 +743,8 @@ func! AddJsonTag()
     :norm ^yiw$a `json:"markviwpcrs
 endfunc
 
-func! DeleteRepeatRow()
+command! DeleteRepeatRow call DeleteRepeatRowFunc()
+func! DeleteRepeatRowFunc()
     :g/^\(.*\)$\n\1$/d
 endfunc
 
@@ -753,3 +760,31 @@ command! -nargs=+ WrapBy execute '.substitute/' . split(<q-args>,' ')[0] . '/&\r
 func! AddEnum(n)
     :for i in range(1,a:n) | put =i | endfor
 endfunc
+
+command! ToGoJSONField call ToGoJSONFieldFunc()
+func! ToGoJSONFieldFunc()
+    :norm elD
+    :s/\s*//g
+    :s/\(.*\)/\1 _TODO_ `json:"\1"`/
+    :norm 0
+    :norm crc
+    :norm gUl
+    :nohl
+endfunc
+
+command! SelectFuncion call SelectFunctionFunc()
+func! SelectFunctionFunc()
+    :norm [[V][
+endfunc
+
+command! DeleteTailingSpaces :s/\s*$//
+command! DeleteTailingSpacesAll :%s/\s*$//
+
+command! CleanupSqlCreation call CleanupSqlCreationFunc()
+func! CleanupSqlCreationFunc()
+    :%s/^|.*| \(.*\)\s*|$/\1/
+    :%s/\s*$//
+    :g/----/d
+    :g/Create Table/d
+endfunc
+
