@@ -115,6 +115,9 @@ map <c-q> <nop>
 nnoremap Y y$
 vnoremap Y "+y
 
+" search selected text
+vnoremap / y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 " indentation
 nnoremap > >>
 nnoremap < <<
@@ -210,7 +213,7 @@ autocmd bufwrite *.py :Autoformat
 " }
 
 " csv {
-autocmd! InsertLeave *.{csv} Tabularize /,
+autocmd! InsertLeave *.csv :%Tabularize /,
 " }
 
 " short for command {
@@ -272,6 +275,29 @@ Plug 'edkolev/tmuxline.vim'
 
 " reg list
 Plug 'junegunn/vim-peekaboo'
+let g:peekaboo_window="call CreateCenteredFloatingWindow()"
+function! CreateCenteredFloatingWindow()
+    let width = float2nr(&columns * 0.6)
+    let height = float2nr(&lines * 0.6)
+    let top = ((&lines - height) / 2) - 1
+    let left = (&columns - width) / 2
+    let opts = {'relative': 'editor', 'row': top, 'col': left, 'width': width, 'height': height, 'style': 'minimal'}
+
+    let top = "╭" . repeat("─", width - 2) . "╮"
+    let mid = "│" . repeat(" ", width - 2) . "│"
+    let bot = "╰" . repeat("─", width - 2) . "╯"
+    let lines = [top] + repeat([mid], height - 2) + [bot]
+    let s:buf = nvim_create_buf(v:false, v:true)
+    call nvim_buf_set_lines(s:buf, 0, -1, v:true, lines)
+    call nvim_open_win(s:buf, v:true, opts)
+    set winhl=Normal:Floating
+    let opts.row += 1
+    let opts.height -= 2
+    let opts.col += 2
+    let opts.width -= 4
+    call nvim_open_win(nvim_create_buf(v:false, v:true), v:true, opts)
+    au BufWipeout <buffer> exe 'bw '.s:buf
+endfunction
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
@@ -366,6 +392,8 @@ let g:Lf_CommandMap = {
 \   '<C-k>': ['<C-p>'],
 \   '<C-j>': ['<C-n>'],
 \}
+nmap <unique> <leader>wg <plug>LeaderfRgCwordLiteralBoundary<cr>
+vmap <unique> <leader>wg <plug>LeaderfRgCwordLiteralBoundary<cr>
 " }
 
 " ===
@@ -434,6 +462,7 @@ let g:coc_global_extensions = [
     \'coc-floaterm',
     \'coc-yaml',
     \'coc-diagnostic',
+    \'coc-java',
 \]
 
 " Trigger completion.
@@ -540,6 +569,7 @@ nnoremap <silent> <leader>xx :<c-u>CocFzfList<cr>
 nnoremap <silent> <leader>lf :<c-u>CocFzfList outline<cr>
 nnoremap <silent> <leader>df :<c-u>CocFzfList diagnostics<cr>
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+nnoremap // :BLines<cr>
 
 " untisnips & vim-snippets {
 Plug 'SirVer/ultisnips'
@@ -579,7 +609,7 @@ let g:go_decls_includes = "func,type"
 
 let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
-let g:go_fmt_command = "gofmt"
+let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1
 
 " linter
@@ -605,7 +635,8 @@ nnoremap <leader>gdb :GoDocBrowser<cr>
 nnoremap gi :GoImplement<cr>
 autocmd bufenter *.go :set ft=go
 " autocmd filetype go set foldmethod=syntax foldnestmax=1
-autocmd! bufwrite *.go :Autoformat
+" autocmd! bufwrite *.go :Autoformat
+autocmd! bufwrite *.go :GoImports
 " autocmd bufwritepost *.go :normal! zv
 
 augroup go
@@ -615,6 +646,9 @@ augroup go
     autocmd filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
 augroup END
 " }
+
+" gotest-vim
+Plug 'buoto/gotests-vim'
 
 " python-mode {
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
@@ -708,7 +742,8 @@ endfunc
 " }
 
 " clear history
-func! CleanHistory()
+command! CleanHistory call CleanHistoryFunc()
+func! CleanHistoryFunc()
     :g/;ls$/d
     :g/;cd$/d
     :g/;exit$/d
@@ -727,6 +762,10 @@ func! CleanHistory()
     :g/;gd$/d
     :g/;gcof$/d
     :g/;gup$/d
+
+    " delete repeat history
+    :g/^: \d\{10\}:\d;\(.*\)$\n: \d\{10\}:\d;\1$/d
+    :g/^: \d\{10\}:\d;\(.*\)$\n.*\n: \d\{10\}:\d;\1$/d
 endfunc
 
 func! TomlToJSON()
