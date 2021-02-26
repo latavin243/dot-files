@@ -11,6 +11,9 @@
 " basic settings {{{
 let mapleader=','
 
+" source nvim config
+nnoremap <leader>so :source $MYVIMRC<cr>
+
 syntax enable
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 set foldenable
@@ -243,11 +246,43 @@ Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-expand-region'
 
 " narrow region {
-Plug 'chrisbra/nrrwrgn'
-let g:nrrw_rgn_vert = 1
-let g:nrrw_rgn_wdth = 120
-let g:nrrw_topbot_leftright = 'botright'
+" Plug 'chrisbra/nrrwrgn'
+" let g:nrrw_rgn_vert = 1
+" let g:nrrw_rgn_wdth = 120
+" let g:nrrw_topbot_leftright = 'botright'
 " }
+
+" inline-edit, narrow region
+Plug 'andrewradev/inline_edit.vim'
+let g:inline_edit_autowrite = 1
+let g:inline_edit_new_buffer_command = "rightbelow vertical new"
+vnoremap <leader>nr :InlineEdit<cr>
+
+" vis & visincr
+Plug 'vim-scripts/vis'
+" :B, :S
+Plug 'vim-scripts/VisIncr'
+" :I, :I -1, :II, etc
+
+" rst-tables
+Plug 'nvie/vim-rst-tables'
+
+" cycle, e.g. true <-> false
+Plug 'bootleq/vim-cycle'
+nmap <silent> <leader>jj <Plug>CycleNext
+nmap <silent> <leader>kk <Plug>CyclePrev
+vmap <silent> <leader>jj <Plug>CycleNext
+vmap <silent> <leader>kk <Plug>CyclePrev
+noremap <silent> <Plug>CycleFallbackNext <C-A>
+noremap <silent> <Plug>CycleFallbackPrev <C-X>
+
+" cheat sheet
+Plug 'scrooloose/syntastic'
+let g:syntastic_javascript_checkers = [ 'jshint' ]
+let g:syntastic_ocaml_checkers = ['merlin']
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_shell_checkers = ['shellcheck']
+Plug 'dbeniamine/cheat.sh-vim'
 
 " custom {
 " buffer only
@@ -301,8 +336,10 @@ endfunction
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
-nmap <leader>ss <plug>(easymotion-s2)
+" nmap <leader>ss <plug>(easymotion-s2)
+nmap <leader>ss <plug>(easymotion-sn)
 nmap <leader>sn <plug>(easymotion-sn)
+nmap ff <plug>(easymotion-sn)
 let g:EasyMotion_smartcase=1
 let g:EasyMotion_keys = 'fjdkswbeoavn'
 " }
@@ -392,8 +429,8 @@ let g:Lf_CommandMap = {
 \   '<C-k>': ['<C-p>'],
 \   '<C-j>': ['<C-n>'],
 \}
-nmap <unique> <leader>wg <plug>LeaderfRgCwordLiteralBoundary<cr>
-vmap <unique> <leader>wg <plug>LeaderfRgCwordLiteralBoundary<cr>
+nmap <leader>wg <plug>LeaderfRgCwordLiteralBoundary<cr>
+vmap <leader>wg <plug>LeaderfRgCwordLiteralBoundary<cr>
 " }
 
 " ===
@@ -649,6 +686,7 @@ augroup END
 
 " gotest-vim
 Plug 'buoto/gotests-vim'
+" let g:gotests_template_dir = '/Users/qiguo/workspace/gotests_template/templates/'
 
 " python-mode {
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
