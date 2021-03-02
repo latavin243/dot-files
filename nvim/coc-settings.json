@@ -31,7 +31,7 @@
     "sh": "shellcheck"
   },
   "diagnostic.languageserver.formatFiletypes": {
-    "go": "gofmt"
+    "go": "goimports"
   },
   "codeLens.enable": true,
   "coc.preferences.formatOnSaveFiletypes": ["json", "python"],
