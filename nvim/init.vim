@@ -245,6 +245,9 @@ Plug 'chiel92/vim-autoformat'
 Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-expand-region'
 
+" repeat f and t (needs vim-repeat)
+Plug 'dahu/vim-fanfingtastic'
+
 " narrow region {
 " Plug 'chrisbra/nrrwrgn'
 " let g:nrrw_rgn_vert = 1
@@ -255,7 +258,7 @@ Plug 'terryma/vim-expand-region'
 " inline-edit, narrow region
 Plug 'andrewradev/inline_edit.vim'
 let g:inline_edit_autowrite = 1
-" let g:inline_edit_new_buffer_command = "rightbelow vertical new"
+" let g:inline_edit_new_buffer_command = 'rightbelow vertical new'
 let g:inline_edit_new_buffer_command = "call CreateCenteredFloatingWindow(0.8, 0.8)"
 vnoremap <leader>nr :InlineEdit<cr>
 
@@ -297,6 +300,11 @@ nnoremap <leader>sgo :Searchit go <c-r><c-w><cr>
 Plug 'latavin243/vim-centered-float-window', {'branch': 'main'}
 " }
 
+" " telescope
+" Plug 'nvim-lua/popup.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+
 " ranger {
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
@@ -319,11 +327,16 @@ let g:peekaboo_window="call CreateCenteredFloatingWindow(0.6, 0.6)"
 " easymotion {
 Plug 'easymotion/vim-easymotion'
 " nmap <leader>ss <plug>(easymotion-s2)
-nmap <leader>ss <plug>(easymotion-sn)
-nmap <leader>sn <plug>(easymotion-sn)
-nmap ff <plug>(easymotion-sn)
+nmap <leader>ss <plug>(easymotion-overwin-sn)
+nmap <leader>sn <plug>(easymotion-overwin-sn)
+nmap ff <plug>(easymotion-overwin-sn)
 let g:EasyMotion_smartcase=1
 let g:EasyMotion_keys = 'fjdkswbeoavn'
+" jump by n chars
+nmap <leader>jl <plug>(easymotion-overwin-line)
+nmap <leader>jn <plug>(easymotion-overwin-sn)
+" jump word
+nmap <leader>jw <Plug>(easymotion-overwin-w)
 " }
 
 " guentags {
@@ -361,6 +374,11 @@ let g:NERDCommentEmptyLines=1
 let g:NERDDefaultAlign='left'
 " }
 
+" graphviz {
+Plug 'liuchengxu/graphviz.vim'
+let g:graphviz_output_format = 'png'
+" }
+
 " illuminate {
 Plug 'RRethy/vim-illuminate' " highlight word under cursor
 " }
@@ -377,6 +395,15 @@ let g:VM_maps['Find Subword Under'] = '<leader>mc' " replace visual C-n
 let g:VM_maps["Select Cursor Down"] = '<M-C-j>'    " start selecting down
 let g:VM_maps["Select Cursor Up"]   = '<M-C-k>'    " start selecting up
 " }
+
+" org-mode
+Plug 'jceb/vim-orgmode'
+Plug 'aloussase/OrgEval.vim'
+let g:org_export_emacs="/usr/local/bin/emacs"
+
+" hardtime, disabling repeating hjkl motions
+Plug 'takac/vim-hardtime'
+let g:hardtime_default_on = 0
 
 " ===
 " === filer
@@ -587,8 +614,13 @@ Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 nnoremap <silent> <leader>xx :<c-u>CocFzfList<cr>
 nnoremap <silent> <leader>lf :<c-u>CocFzfList outline<cr>
 nnoremap <silent> <leader>df :<c-u>CocFzfList diagnostics<cr>
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 nnoremap // :BLines<cr>
+
+" float term
+Plug 'voldikss/vim-floaterm'
+nnoremap <silent> <F12> :FloatermToggle<CR>
+tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
 
 " untisnips & vim-snippets {
 Plug 'SirVer/ultisnips'
@@ -691,6 +723,9 @@ let g:airline_section_c='' " filename
 let g:airline_section_y='' " file encoding
 " }
 
+" " icons lspkind-nvim
+" Plug 'lspkind-nvim'
+
 " rainbow {
 Plug 'luochen1990/rainbow'
 let g:rainbow_active=1
@@ -736,6 +771,13 @@ func! RunVimRun()
         :term python3 %
     elseif &filetype == 'markdown'
         exec "MarkdownPreview"
+    elseif &filetype == 'xhtml'
+        :!open % -a Google\ Chrome
+    elseif &filetype == 'dot'
+        let current_file_name=expand('%:r')
+        let output_file_path=current_file_name . '.png'
+        exec "!dot -Tpng % -o " . output_file_path
+        exec "!open " . output_file_path
     endif
 endfunc
 
