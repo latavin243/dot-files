@@ -453,6 +453,10 @@ Plug 'godlygeek/tabular'
 " === markdown
 " ===
 
+" markdown
+" depends on godlygeek/tabular
+Plug 'plasticboy/vim-markdown'
+
 " markdown-preview {
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown'] }
 let g:mkdp_auto_start = 0
