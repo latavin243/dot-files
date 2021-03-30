@@ -16,6 +16,7 @@ nnoremap <leader>so :source $MYVIMRC<cr>
 
 syntax enable
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
+lang en_US.UTF-8
 set foldenable
 set hidden
 set mouse=a
@@ -236,13 +237,11 @@ call plug#begin('~/.config/nvim/plugins')
 Plug 'bling/vim-bufferline'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-abolish'
-Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 
 Plug 'Yggdroot/indentLine'
 Plug 'chiel92/vim-autoformat'
-Plug 'airblade/vim-gitgutter'
 Plug 'terryma/vim-expand-region'
 
 " repeat f and t (needs vim-repeat)
@@ -351,6 +350,12 @@ nmap <leader>jw <Plug>(easymotion-overwin-w)
 " let g:gutentags_exclude_filetypes = ['gitcommit', 'gitconfig', 'gitrebase', 'gitsendemail', 'git']
 " }
 
+" git
+Plug 'tpope/vim-fugitive'
+command! Gblame :Git blame
+
+Plug 'airblade/vim-gitgutter'
+
 " ale: linting {
 Plug 'w0rp/ale'
 let g:ale_linters_explicit = 1
@@ -431,7 +436,6 @@ let g:Lf_PreviewInPopup = 1
 nnoremap <leader>ll :Leaderf<space>
 nnoremap <leader>ff :LeaderfFile<cr>
 nnoremap <leader>bb :LeaderfBuffer<cr>
-" nnoremap <leader>lf :LeaderfFunction<cr>
 nnoremap <leader>sf :Leaderf<space>rg<cr>
 nnoremap <leader>rg :Leaderf<space>rg<cr>
 let g:Lf_CommandMap = {
@@ -616,7 +620,8 @@ Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
 Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 nnoremap <silent> <leader>xx :<c-u>CocFzfList<cr>
-nnoremap <silent> <leader>lf :<c-u>CocFzfList outline<cr>
+" nnoremap <silent> <leader>lf :<c-u>CocFzfList outline<cr>
+nnoremap <leader>lf :LeaderfFunction<cr>
 nnoremap <silent> <leader>df :<c-u>CocFzfList diagnostics<cr>
 let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 nnoremap // :BLines<cr>
