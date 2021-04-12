@@ -328,7 +328,7 @@ Plug 'easymotion/vim-easymotion'
 " nmap <leader>ss <plug>(easymotion-s2)
 nmap <leader>ss <plug>(easymotion-overwin-sn)
 nmap <leader>sn <plug>(easymotion-overwin-sn)
-nmap ff <plug>(easymotion-overwin-sn)
+nmap ff <plug>(easymotion-sn)
 let g:EasyMotion_smartcase=1
 let g:EasyMotion_keys = 'fjdkswbeoavn'
 " jump by n chars
@@ -403,8 +403,8 @@ let g:VM_maps["Select Cursor Up"]   = '<M-C-k>'    " start selecting up
 
 " org-mode
 Plug 'jceb/vim-orgmode'
-Plug 'aloussase/OrgEval.vim'
 let g:org_export_emacs="/usr/local/bin/emacs"
+" Plug 'aloussase/OrgEval.vim'
 
 " hardtime, disabling repeating hjkl motions
 Plug 'takac/vim-hardtime'
