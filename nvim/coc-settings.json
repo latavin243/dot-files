@@ -1,7 +1,7 @@
 {
-  "json.format.enable": true,
   "coc-actions.hideCursor": false,
   "coc-actions.showActionKind": true,
+
   "suggest.detailMaxLength": 60,
   "suggest.noselect": true,
   "suggest.enablePreselect": false,
@@ -13,6 +13,7 @@
   "suggest.snippetIndicator": "",
   "suggest.triggerCompletionWait": 100,
   "suggest.echodocSupport": true,
+
   "diagnostic.signOffset": 1,
   "diagnostic.errorSign": "ERR",
   "diagnostic.warningSign": "WARN",
@@ -23,7 +24,7 @@
   "diagnostic.refreshAfterSave": false,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualTextPrefix": " >>> ",
-  "diagnostic.virtualText": true,
+  "diagnostic.virtualText": false,
   "diagnostic.languageserver.filetypes": {
     "vim": "vint",
     "email": "languagetool",
@@ -33,8 +34,22 @@
   "diagnostic.languageserver.formatFiletypes": {
     "go": "goimports"
   },
+
+  "go.goplsOptions": {
+    "codelenses": {
+      "generate": false,
+      "gc_details": true
+    }
+  },
+
+  "java.referencesCodeLens.enabled": true,
+
+  "json.format.enable": true,
+
   "codeLens.enable": true,
+
   "coc.preferences.formatOnSaveFiletypes": ["json", "python"],
+
   "explorer.width": 40,
   "explorer.quitOnOpen": true,
   "explorer.keyMappings.global": {
@@ -84,6 +99,7 @@
     "[d": "diagnosticPrev",
     "]d": "diagnosticNext"
   },
+
   "python.autoComplete.addBrackets": true,
   "python.jediEnabled": false,
   "python.formatting.provider": "yapf",

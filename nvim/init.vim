@@ -517,6 +517,8 @@ let g:coc_global_extensions = [
     \'coc-yaml',
     \'coc-diagnostic',
     \'coc-java',
+    \'coc-go',
+    \'coc-snippets',
 \]
 
 " Trigger completion.
