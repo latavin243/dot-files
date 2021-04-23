@@ -81,7 +81,7 @@ set wildmode=longest,list,full
 
 " key mappings {
 " nnoremap s <nop>
-nnoremap Q :q<cr>
+map Q <nop>
 
 " buffer
 nnoremap <silent> [b :bprevious<CR>
@@ -356,6 +356,8 @@ command! Gblame :Git blame
 
 Plug 'airblade/vim-gitgutter'
 
+Plug 'stsewd/fzf-checkout.vim'
+
 " ale: linting {
 Plug 'w0rp/ale'
 let g:ale_linters_explicit = 1
@@ -459,7 +461,7 @@ Plug 'godlygeek/tabular'
 
 " markdown
 " depends on godlygeek/tabular
-Plug 'plasticboy/vim-markdown'
+" Plug 'plasticboy/vim-markdown'
 
 " markdown-preview {
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown'] }
@@ -900,3 +902,11 @@ func! CleanupSqlCreationFunc()
     :g/Create Table/d
 endfunc
 
+
+" peek definition
+" Experimental feature (peek definition): gp
+" Peek into the definition in a floating window.
+" TODO: If there are 2+ definitions, it does not work with floating windows (coc.nvim problem)
+" command! -nargs=0 PreviewDefinition :call CocActionAsync('jumpDefinition', ':call CreateCenteredFloatingWindow(0.6, 0.6)')
+" nmap <silent>gp :<C-U>PreviewDefinition<CR>
+" nmap <leader>k :<C-U>PreviewDefinition<CR>

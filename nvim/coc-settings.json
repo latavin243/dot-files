@@ -35,15 +35,6 @@
     "go": "goimports"
   },
 
-  "go.goplsOptions": {
-    "codelenses": {
-      "generate": false,
-      "gc_details": false
-    }
-  },
-
-  "java.referencesCodeLens.enabled": true,
-
   "json.format.enable": true,
 
   "codeLens.enable": true,
