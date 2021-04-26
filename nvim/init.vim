@@ -902,11 +902,17 @@ func! CleanupSqlCreationFunc()
     :g/Create Table/d
 endfunc
 
+command! -range AddGoJSONTagWithFirst call AddGoJSONTagWithFirstFunc()
+func! AddGoJSONTagWithFirstFunc() range
+    :s/\s*\(\w*\)\s*\(.*\)/\1 \2 `json:"\1"`/
+endfunc
+
 
 " peek definition
 " Experimental feature (peek definition): gp
 " Peek into the definition in a floating window.
 " TODO: If there are 2+ definitions, it does not work with floating windows (coc.nvim problem)
-" command! -nargs=0 PreviewDefinition :call CocActionAsync('jumpDefinition', ':call CreateCenteredFloatingWindow(0.6, 0.6)')
+" command! -nargs=0 PreviewDefinition :call CocActionAsync('jumpDefinition', 'call CreateCenteredFloatingWindow(0.6, 0.6)')
 " nmap <silent>gp :<C-U>PreviewDefinition<CR>
 " nmap <leader>k :<C-U>PreviewDefinition<CR>
+" nmap <silent> gp :call CocAction('jumpDefinition', 'copen')<CR>
