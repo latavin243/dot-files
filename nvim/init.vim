@@ -558,14 +558,16 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use K to show documentation in preview window
+" Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
   else
-    call CocAction('doHover')
+    execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
 
@@ -907,6 +909,10 @@ func! AddGoJSONTagWithFirstFunc() range
     :s/\s*\(\w*\)\s*\(.*\)/\1 \2 `json:"\1"`/
 endfunc
 
+command! CountLineRepeat call CountLineRepeatFunc()
+func! CountLineRepeatFunc()
+    :%!sort | uniq -c | sort
+endfunc
 
 " peek definition
 " Experimental feature (peek definition): gp
