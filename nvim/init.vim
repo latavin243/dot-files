@@ -369,7 +369,6 @@ let g:ale_lint_delay = 500
 let g:ale_echo_msg_format = '[%linter%] %code: %%s'
 let g:ale_lint_on_text_changed = 'normal'
 let g:ale_lint_on_insert_leave = 1
-let g:airline#extensions#ale#enabled = 1
 " }
 
 " ===
@@ -746,13 +745,8 @@ Plug 'NLKNguyen/papercolor-theme'
 " Plug 'vim-scripts/peaksea'
 Plug 'srcery-colors/srcery-vim'
 
-" airline {
-Plug 'vim-airline/vim-airline'
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#buffer_nr_show=1
-let g:airline_section_b='' " vcs info
-let g:airline_section_c='' " filename
-let g:airline_section_y='' " file encoding
+" lightline {
+Plug 'itchyny/lightline.vim'
 " }
 
 " " icons lspkind-nvim
