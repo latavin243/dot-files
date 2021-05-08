@@ -326,9 +326,11 @@ let g:peekaboo_window="call CreateCenteredFloatingWindow(0.6, 0.6)"
 " easymotion {
 Plug 'easymotion/vim-easymotion'
 " nmap <leader>ss <plug>(easymotion-s2)
-nmap <leader>ss <plug>(easymotion-overwin-sn)
+" nmap <leader>ss <plug>(easymotion-overwin-sn)
 nmap <leader>sn <plug>(easymotion-overwin-sn)
-nmap ff <plug>(easymotion-sn)
+nmap <leader>ss <plug>(easymotion-sn)
+autocmd User EasyMotionPromptBegin silent! CocDisable
+autocmd User EasyMotionPromptEnd silent! CocEnable
 let g:EasyMotion_smartcase=1
 let g:EasyMotion_keys = 'fjdkswbeoavn'
 " jump by n chars
@@ -435,8 +437,11 @@ let g:Lf_Ctags = "ctags"
 let g:Lf_ShowDevIcons = 0
 let g:Lf_WindowPosition = 'popup'
 let g:Lf_PreviewInPopup = 1
+let g:Lf_UseVersionControlTool = 0
+let g:Lf_UseMemoryCache = 0
 nnoremap <leader>ll :Leaderf<space>
-nnoremap <leader>ff :LeaderfFile<cr>
+" nnoremap <leader>ff :LeaderfFile<cr>
+nnoremap <leader>ff :FZF<cr>
 nnoremap <leader>bb :LeaderfBuffer<cr>
 nnoremap <leader>sf :Leaderf<space>rg<cr>
 nnoremap <leader>rg :Leaderf<space>rg<cr>
@@ -521,6 +526,7 @@ let g:coc_global_extensions = [
     \'coc-java',
     \'coc-go',
     \'coc-snippets',
+    \'coc-smartf',
 \]
 
 " Trigger completion.
@@ -618,6 +624,17 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 
 " Add status line support, for integration with other plugin, checkout `:h coc-status`
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" coc-smartf
+nmap f <Plug>(coc-smartf-forward)
+nmap F <Plug>(coc-smartf-backward)
+nmap ; <Plug>(coc-smartf-repeat)
+nmap , <Plug>(coc-smartf-repeat-opposite)
+
+augroup Smartf
+  autocmd User SmartfEnter :hi Conceal ctermfg=220 guifg=#6638F0
+  autocmd User SmartfLeave :hi Conceal ctermfg=239 guifg=#504945
+augroup end
 
 " }
 
@@ -758,8 +775,8 @@ call plug#end()
 
 " theme {
 " colorscheme PaperColor
-set t_Co=256
 colorscheme srcery
+set t_Co=256
 set background=dark
 
 " transparent

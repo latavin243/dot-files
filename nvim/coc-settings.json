@@ -106,5 +106,7 @@
       "rootPatterns": ["go.mod", ".git"],
       "filetypes": ["go"]
     }
-  }
+  },
+
+  "smartf.timeout": 3000
 }
