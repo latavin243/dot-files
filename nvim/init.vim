@@ -625,8 +625,8 @@ command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " coc-smartf
-nmap f <Plug>(coc-smartf-forward)
-nmap F <Plug>(coc-smartf-backward)
+" nmap f <Plug>(coc-smartf-forward)
+" nmap F <Plug>(coc-smartf-backward)
 nmap ; <Plug>(coc-smartf-repeat)
 nmap , <Plug>(coc-smartf-repeat-opposite)
 
