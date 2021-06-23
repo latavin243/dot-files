@@ -544,6 +544,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<cr>
 " nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
@@ -933,3 +934,8 @@ endfunc
 " nmap <silent>gp :<C-U>PreviewDefinition<CR>
 " nmap <leader>k :<C-U>PreviewDefinition<CR>
 " nmap <silent> gp :call CocAction('jumpDefinition', 'copen')<CR>
+
+command! ConvertAllDSNToMyCLI call ConvertAllDSNToMyCLIFunc()
+func! ConvertAllDSNToMyCLIFunc()
+    :%s/^\s*"dsn": "\(.*\):\(.*\)@tcp(\(.*\):\(\d*\))\/\(\w*\)?.*$/mycli -u \1 -p \2 -h \3 -P \4 -D \5/
+endfunc
