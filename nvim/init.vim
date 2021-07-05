@@ -297,6 +297,8 @@ nnoremap <leader>st :Searchit<space>
 nnoremap <leader>sgo :Searchit go <c-r><c-w><cr>
 
 Plug 'latavin243/vim-centered-float-window', {'branch': 'main'}
+
+Plug 'latavin243/ts2dt.vim', {'branch': 'main'}
 " }
 
 " " telescope
@@ -937,5 +939,6 @@ endfunc
 
 command! ConvertAllDSNToMyCLI call ConvertAllDSNToMyCLIFunc()
 func! ConvertAllDSNToMyCLIFunc()
-    :%s/^\s*"dsn": "\(.*\):\(.*\)@tcp(\(.*\):\(\d*\))\/\(\w*\)?.*$/mycli -u \1 -p \2 -h \3 -P \4 -D \5/
+    :%s/^\s*"dsn": "\(.*\):\(.*\)@tcp(\(.*\):\(\d*\))\/\(\w*\)?.*$/mycli -h \3 -P \4 -u \1 -p \2 -D \5/
 endfunc
+
