@@ -299,6 +299,7 @@ nnoremap <leader>sgo :Searchit go <c-r><c-w><cr>
 Plug 'latavin243/vim-centered-float-window', {'branch': 'main'}
 
 Plug 'latavin243/ts2dt.vim', {'branch': 'main'}
+nnoremap <leader>ts :TS2DT <c-r><c-w>
 " }
 
 " " telescope
@@ -747,6 +748,7 @@ let g:pymode_options_max_line_length=120
 Plug 'NLKNguyen/papercolor-theme'
 " Plug 'vim-scripts/peaksea'
 Plug 'srcery-colors/srcery-vim'
+Plug 'ajmwagar/vim-deus'
 
 " lightline {
 Plug 'itchyny/lightline.vim'
@@ -762,17 +764,28 @@ let g:rainbow_active=1
 
 " date calculation {
 Plug 'tpope/vim-speeddating'
+
+command! AddDTFormat call AddDTFormatFunc()
+func! AddDTFormatFunc()
+    :SpeedDatingFormat %Y%m%d
+endfunc
 " }
 
 " wildfire, expand region
 Plug 'gcmt/wildfire.vim'
+
+" accelerate cursor move
+Plug 'rhysd/accelerated-jk'
+" nmap j <Plug>(accelerated_jk_gj)
+" nmap k <Plug>(accelerated_jk_gk)
 
 call plug#end()
 " }
 
 " theme {
 " colorscheme PaperColor
-colorscheme srcery
+" colorscheme srcery
+color deus
 set t_Co=256
 set background=dark
 
@@ -942,3 +955,12 @@ func! ConvertAllDSNToMyCLIFunc()
     :%s/^\s*"dsn": "\(.*\):\(.*\)@tcp(\(.*\):\(\d*\))\/\(\w*\)?.*$/mycli -h \3 -P \4 -u \1 -p \2 -D \5/
 endfunc
 
+command! TidyJIRA call TidyJIRAFunc()
+func! TidyJIRAFunc()
+    :set ft=markdown
+    :v/SPPC/d
+    :g/BE/norm dtB
+    :%s/\(SPPC-\d*\)\s*/[[\1](https:\/\/jira.shopee.io\/browse\/\1)]/
+    :g/SPPC/norm J
+    :%norm A  
+endfunc
