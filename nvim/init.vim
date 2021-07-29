@@ -507,6 +507,14 @@ nmap ga <Plug>(EasyAlign)
 " }
 
 " ===
+" === syntax parser
+" ===
+
+" treesitter
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
+
+" ===
 " === autocomplete
 " ===
 " coc {
@@ -749,6 +757,7 @@ Plug 'NLKNguyen/papercolor-theme'
 " Plug 'vim-scripts/peaksea'
 Plug 'srcery-colors/srcery-vim'
 Plug 'ajmwagar/vim-deus'
+Plug 'ayu-theme/ayu-vim'
 
 " lightline {
 Plug 'itchyny/lightline.vim'
@@ -781,6 +790,18 @@ Plug 'rhysd/accelerated-jk'
 
 call plug#end()
 " }
+
+" syntax parser config
+" nvim-treesitter (must after plug#end)
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"java", "gomod", "toml", "yaml", "json", "python"},     -- one of "all", "language", or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+    disable = { "c", "rust" },  -- list of language that will be disabled
+  },
+}
+EOF
 
 " theme {
 " colorscheme PaperColor
@@ -963,4 +984,12 @@ func! TidyJIRAFunc()
     :%s/\(SPPC-\d*\)\s*/[[\1](https:\/\/jira.shopee.io\/browse\/\1)]/
     :g/SPPC/norm J
     :%norm A  
+endfunc
+
+command! ParseOff call ParseOffFunc()
+func! ParseOffFunc()
+    :set ft=
+    :set syn=
+    :syntax off
+    :set nowrap
 endfunc
