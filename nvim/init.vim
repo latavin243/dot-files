@@ -750,14 +750,19 @@ Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 let g:pymode_options_max_line_length=120
 " }
 
+" document dash
+Plug 'rizzatti/dash.vim'
+
 " ===
 " === theme
 " ===
 Plug 'NLKNguyen/papercolor-theme'
 " Plug 'vim-scripts/peaksea'
 Plug 'srcery-colors/srcery-vim'
-Plug 'ajmwagar/vim-deus'
 Plug 'ayu-theme/ayu-vim'
+Plug 'morhetz/gruvbox'
+let g:gruvbox_contrast_dark='hard'
+
 
 " lightline {
 Plug 'itchyny/lightline.vim'
@@ -806,7 +811,7 @@ EOF
 " theme {
 " colorscheme PaperColor
 " colorscheme srcery
-color deus
+color gruvbox
 set t_Co=256
 set background=dark
 
