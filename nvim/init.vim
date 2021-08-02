@@ -788,8 +788,8 @@ endfunc
 " wildfire, expand region
 Plug 'gcmt/wildfire.vim'
 
-" accelerate cursor move
-Plug 'rhysd/accelerated-jk'
+" " accelerate cursor move
+" Plug 'rhysd/accelerated-jk'
 " nmap j <Plug>(accelerated_jk_gj)
 " nmap k <Plug>(accelerated_jk_gk)
 
