@@ -204,6 +204,7 @@ autocmd! FileType yaml set ts=2 sts=2 sw=2 nosi noai expandtab
 
 " json
 autocmd! FileType json set ts=2 sts=2 sw=2 nosi noai expandtab
+autocmd! FileType dot set ts=2 sts=2 sw=2 nosi noai expandtab
 
 " python {
 let python_highlight_all=1
@@ -555,7 +556,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<cr>
+" nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<cr>
 " nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
@@ -892,6 +893,8 @@ func! CleanHistoryFunc()
     :g/;gd$/d
     :g/;gcof$/d
     :g/;gup$/d
+    :g/;grba$/d
+    :g/;grbc$/d
 
     " delete repeat history
     :g/^: \d\{10\}:\d;\(.*\)$\n: \d\{10\}:\d;\1$/d
