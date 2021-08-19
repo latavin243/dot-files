@@ -14,24 +14,26 @@
   "suggest.triggerCompletionWait": 100,
   "suggest.echodocSupport": true,
 
-  "diagnostic.signOffset": 1,
+  "diagnostic.enable": true,
   "diagnostic.errorSign": "ERR",
   "diagnostic.warningSign": "WARN",
   "diagnostic.infoSign": "INFO",
   "diagnostic.hintSign": "HINT",
   "diagnostic.displayByAle": false,
+  "diagnostic.autoRefresh": true,
   "diagnostic.refreshOnInsertMode": false,
-  "diagnostic.refreshAfterSave": false,
   "diagnostic.checkCurrentLine": true,
   "diagnostic.virtualTextPrefix": " >>> ",
   "diagnostic.virtualText": false,
-  "diagnostic.languageserver.filetypes": {
+
+  "diagnostic-languageserver.enable": true,
+  "diagnostic-languageserver.filetypes": {
     "vim": "vint",
     "email": "languagetool",
     "markdown": ["write-good", "markdownlint"],
     "sh": "shellcheck"
   },
-  "diagnostic.languageserver.formatFiletypes": {
+  "diagnostic-languageserver.formatFiletypes": {
     "go": "goimports"
   },
 

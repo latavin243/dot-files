@@ -523,21 +523,21 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
     \'coc-actions',
-    \'coc-explorer',
-    \'coc-gitignore',
-    \'coc-json',
-    \'coc-prettier',
-    \'coc-lists',
-    \'coc-pyright',
-    \'coc-vimlsp',
-    \'coc-yank',
-    \'coc-floaterm',
-    \'coc-yaml',
     \'coc-diagnostic',
-    \'coc-java',
+    \'coc-explorer',
+    \'coc-floaterm',
+    \'coc-gitignore',
     \'coc-go',
-    \'coc-snippets',
+    \'coc-java',
+    \'coc-json',
+    \'coc-lists',
+    \'coc-prettier',
+    \'coc-pyright',
     \'coc-smartf',
+    \'coc-snippets',
+    \'coc-vimlsp',
+    \'coc-yaml',
+    \'coc-yank',
 \]
 
 " Trigger completion.
@@ -804,7 +804,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = {"java", "gomod", "toml", "yaml", "json", "python"},     -- one of "all", "language", or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust" },  -- list of language that will be disabled
+    disable = { "c", "rust", "go" },  -- list of language that will be disabled
   },
 }
 EOF
@@ -1001,3 +1001,5 @@ func! ParseOffFunc()
     :syntax off
     :set nowrap
 endfunc
+
+command! FindGinAPIPattern /\v(GET|PUT|POST)\(
