@@ -223,14 +223,14 @@ autocmd! InsertLeave *.csv :%Tabularize /,
 
 " short for command {
 " open vimrc
-nnoremap <leader>rc :e ~/.config/nvim/init.vim<cr>
+nnoremap <leader>rc :e $HOME/.config/nvim/init.vim<cr>
 
 " ascii art
 nnoremap tx :r!figlet<space>
 " }
 
 " plugins {
-call plug#begin('~/.config/nvim/plugins')
+call plug#begin('$HOME/.config/nvim/plugins')
 
 " ===
 " === basic
@@ -348,7 +348,7 @@ nmap <leader>jw <Plug>(easymotion-overwin-w)
 " Plug 'ludovicchabant/vim-gutentags'
 " let g:gutentags_project_root = ['.git','.project']
 " let g:gutentags_ctags_tagfile = '.tags'
-" let s:vim_tags = expand('~/.config/nvim/cache/gutentags')
+" let s:vim_tags = expand('$HOME/.config/nvim/cache/gutentags')
 " let g:gutentags_cache_dir = s:vim_tags
 " if !isdirectory(s:vim_tags)
 "     silent! call mkdir(s:vim_tags, 'p')
@@ -424,7 +424,7 @@ let g:hardtime_default_on = 0
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir=0
 let g:startify_change_to_vcs_root=1
-let g:startify_session_dir='~/.vim/sessions'
+let g:startify_session_dir='$HOME/.vim/sessions'
 let g:startify_files_number=20
 autocmd filetype startify set cursorline
 " }
@@ -526,7 +526,6 @@ let g:coc_global_extensions = [
     \'coc-diagnostic',
     \'coc-explorer',
     \'coc-floaterm',
-    \'coc-gitignore',
     \'coc-go',
     \'coc-java',
     \'coc-json',
@@ -651,7 +650,7 @@ augroup end
 " }
 
 " coc-fzf
-Plug 'junegunn/fzf', {'dir': '~/.fzf','do': './install --all'}
+Plug 'junegunn/fzf', {'dir': '$HOME/.fzf','do': './install --all'}
 Plug 'junegunn/fzf.vim' " needed for previews
 Plug 'antoinemadec/coc-fzf', {'branch': 'release'}
 nnoremap <silent> <leader>xx :<c-u>CocFzfList<cr>
