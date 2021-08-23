@@ -358,11 +358,14 @@ nmap <leader>jw <Plug>(easymotion-overwin-w)
 
 " git
 Plug 'tpope/vim-fugitive'
+Plug 'stsewd/fzf-checkout.vim'
 command! Gblame :Git blame
+command! Gco :GBranches
+command! Gst :G
+" command! Gc :Gcommit
+command! Gp :Git push
 
 Plug 'airblade/vim-gitgutter'
-
-Plug 'stsewd/fzf-checkout.vim'
 
 " ale: linting {
 Plug 'w0rp/ale'
@@ -657,7 +660,8 @@ nnoremap <silent> <leader>xx :<c-u>CocFzfList<cr>
 " nnoremap <silent> <leader>lf :<c-u>CocFzfList outline<cr>
 nnoremap <leader>lf :LeaderfFunction<cr>
 nnoremap <silent> <leader>df :<c-u>CocFzfList diagnostics<cr>
-let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS="--reverse"
 nnoremap // :BLines<cr>
 
 " float term
