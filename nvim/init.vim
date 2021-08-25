@@ -364,6 +364,11 @@ command! Gco :GBranches
 command! Gst :G
 " command! Gc :Gcommit
 command! Gp :Git push
+nnoremap <leader>gco :GBranches<cr>
+nnoremap <leader>gst :G<cr>
+" refer to http://vimcasts.org/episodes/fugitive-vim-resolving-merge-conflicts-with-vimdiff/
+nnoremap <leader>gl :diffget //2<cr>
+nnoremap <leader>gr :diffget //3<cr>
 
 Plug 'airblade/vim-gitgutter'
 
