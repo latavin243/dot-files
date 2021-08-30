@@ -665,7 +665,7 @@ nnoremap <silent> <leader>xx :<c-u>CocFzfList<cr>
 " nnoremap <silent> <leader>lf :<c-u>CocFzfList outline<cr>
 nnoremap <leader>lf :LeaderfFunction<cr>
 nnoremap <silent> <leader>df :<c-u>CocFzfList diagnostics<cr>
-let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 let $FZF_DEFAULT_OPTS="--reverse"
 nnoremap // :BLines<cr>
 
@@ -738,6 +738,7 @@ nnoremap <leader>gdb :GoDocBrowser<cr>
 nnoremap gi :GoImplement<cr>
 autocmd bufenter *.go :set ft=go
 " autocmd filetype go set foldmethod=syntax foldnestmax=1
+autocmd filetype go set foldmethod=indent foldnestmax=1
 " autocmd! bufwrite *.go :Autoformat
 autocmd! bufwrite *.go :GoImports
 " autocmd bufwritepost *.go :normal! zv
@@ -796,6 +797,7 @@ endfunc
 
 " wildfire, expand region
 Plug 'gcmt/wildfire.vim'
+let g:wildfire_objects = ["iw", "i'", 'i"', "i)", "i]", "i}", "ip", "it"]
 
 " " accelerate cursor move
 " Plug 'rhysd/accelerated-jk'
