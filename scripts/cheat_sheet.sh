@@ -6,7 +6,7 @@ selected=`printf "$languages\n$core_utils" | fzf`
 read -p "query: " query
 
 if printf $languages | grep -qs $selected; then
-    curl cht.sh/$selected/`echo $query | tr ' ' '+'` & while [ : ]; do sleep 1; done
+    curl -s cht.sh/$selected/`echo $query | tr ' ' '+'` | less
 else
-    curl cht.sh/$selected~$query & while [ : ]; do sleep 1; done
+    curl cht.sh/$selected~$query | less
 fi
