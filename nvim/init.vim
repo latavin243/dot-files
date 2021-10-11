@@ -240,6 +240,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'Yggdroot/indentLine'
 Plug 'chiel92/vim-autoformat'
@@ -733,23 +734,25 @@ let g:go_metalinter_deadline = "5s"
 
 nnoremap <leader>n :cnext<cr>
 nnoremap <leader>m :cprevious<cr>
-nnoremap <leader>gdb :GoDocBrowser<cr>
 
-nnoremap gi :GoImplement<cr>
 autocmd bufenter *.go :set ft=go
+autocmd filetype go call SetGolangOptions()
+function SetGolangOptions()
+    nnoremap <leader>gdb :GoDocBrowser<cr>
+    nnoremap gi :GoImplement<cr>
+    nnoremap <c-]> :GoDef<cr>
+
+    command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+    command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+    command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+endfunction
+
 " autocmd filetype go set foldmethod=syntax foldnestmax=1
 autocmd filetype go set foldmethod=indent foldnestmax=1
 autocmd filetype godoc set nofoldenable
 " autocmd! bufwrite *.go :Autoformat
 autocmd! bufwrite *.go :GoImports
 " autocmd bufwritepost *.go :normal! zv
-
-augroup go
-    autocmd!
-    autocmd filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-    autocmd filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-    autocmd filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-augroup END
 " }
 
 " gotest-vim

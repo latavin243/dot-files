@@ -1,7 +1,7 @@
 # if err
 snippet iferr "if err"
 if err != nil {
-	${1:return err}
+	return ${1:var}, err
 }
 endsnippet
 
@@ -13,6 +13,12 @@ endsnippet
 
 snippet print "print"
 fmt.${1:Println}(${2:_TODO_})
+$0
+endsnippet
+
+# format string
+snippet format "format string"
+${1:str} = fmt.Fprintf("${2:template}", ${3:vars})
 $0
 endsnippet
 
@@ -55,4 +61,18 @@ snippet for "for"
 for ${1:_}, ${2:_TODO_} := range ${3:_TODO_} {
 	$0
 }
+endsnippet
+
+# while
+snippet while "while"
+for ${1:condition} {
+	${2:logic}
+}
+$0
+endsnippet
+
+# log.Errorf
+snippet loge "log.Errorf()"
+log.Errorf("${1:_TODO_}, err=%s", ${2:_TODO_}, err)
+$0
 endsnippet
