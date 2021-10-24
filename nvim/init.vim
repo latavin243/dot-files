@@ -739,6 +739,7 @@ nnoremap gi :GoImplement<cr>
 autocmd bufenter *.go :set ft=go
 " autocmd filetype go set foldmethod=syntax foldnestmax=1
 autocmd filetype go set foldmethod=indent foldnestmax=1
+autocmd filetype godoc set nofoldenable
 " autocmd! bufwrite *.go :Autoformat
 autocmd! bufwrite *.go :GoImports
 " autocmd bufwritepost *.go :normal! zv
