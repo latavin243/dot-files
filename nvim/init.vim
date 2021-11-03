@@ -815,10 +815,10 @@ call plug#end()
 " nvim-treesitter (must after plug#end)
 lua <<EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"java", "gomod", "toml", "yaml", "json", "python"},     -- one of "all", "language", or a list of languages
+  ensure_installed = {"java", "gomod", "toml", "yaml", "json"},     -- one of "all", "language", or a list of languages
   highlight = {
     enable = true,              -- false will disable the whole extension
-    disable = { "c", "rust", "go" },  -- list of language that will be disabled
+    disable = { "c", "rust", "go", "python" },  -- list of language that will be disabled
   },
 }
 EOF
@@ -826,7 +826,11 @@ EOF
 " theme {
 " colorscheme PaperColor
 " colorscheme srcery
-color gruvbox
+" color gruvbox
+set termguicolors     " enable true colors support
+let ayucolor="dark"   " for dark version of theme
+colorscheme ayu
+
 set t_Co=256
 set background=dark
 
@@ -1017,3 +1021,13 @@ func! ParseOffFunc()
 endfunc
 
 command! FindGinAPIPattern /\v(GET|PUT|POST)\(
+
+if has('mac')
+  function! TyporaLaunch()
+      " Launch Typora
+      call system("open -a Typora \"" . expand("%") . "\"")
+      setlocal autoread
+  endfunction
+
+  command! Typora call TyporaLaunch()
+endif
