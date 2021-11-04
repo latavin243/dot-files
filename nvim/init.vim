@@ -782,6 +782,8 @@ Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark='hard'
 
+Plug 'nanotech/jellybeans.vim'
+
 
 " lightline {
 Plug 'itchyny/lightline.vim'
@@ -831,10 +833,13 @@ EOF
 " theme {
 " colorscheme PaperColor
 " colorscheme srcery
-" color gruvbox
-set termguicolors     " enable true colors support
-let ayucolor="dark"   " for dark version of theme
-colorscheme ayu
+color gruvbox
+
+" set termguicolors     " enable true colors support
+" let ayucolor="dark"   " for dark version of theme
+" colorscheme ayu
+
+" colorscheme jellybeans
 
 set t_Co=256
 set background=dark
