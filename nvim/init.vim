@@ -669,6 +669,11 @@ nnoremap <silent> <leader>df :<c-u>CocFzfList diagnostics<cr>
 let g:fzf_layout = { 'window': { 'width': 0.6, 'height': 0.6 } }
 let $FZF_DEFAULT_OPTS="--reverse"
 nnoremap // :BLines<cr>
+let g:fzf_action = {
+      \ 'ctrl-t': 'tab split',
+      \ 'ctrl-s': 'split',
+      \ 'ctrl-v': 'vsplit'
+      \ }
 
 " float term
 Plug 'voldikss/vim-floaterm'
