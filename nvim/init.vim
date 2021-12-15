@@ -240,6 +240,7 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'tpope/vim-abolish'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-unimpaired'
 Plug 'AndrewRadev/splitjoin.vim'
 
 Plug 'Yggdroot/indentLine'
@@ -535,7 +536,6 @@ let g:coc_global_extensions = [
     \'coc-diagnostic',
     \'coc-explorer',
     \'coc-floaterm',
-    \'coc-go',
     \'coc-java',
     \'coc-json',
     \'coc-lists',
@@ -717,7 +717,10 @@ let g:go_decls_includes = "func,type"
 
 let g:go_def_mode = 'godef'
 let g:go_info_mode = 'gocode'
-let g:go_fmt_command = "goimports"
+" let g:go_fmt_command = "goimports"
+" use gofumpt
+let g:go_fmt_command="gopls"
+let g:go_gopls_gofumpt=1
 let g:go_fmt_experimental = 1
 
 " linter
@@ -1040,3 +1043,10 @@ if has('mac')
 
   command! Typora call TyporaLaunch()
 endif
+
+command! FindConflict /\v^(<<<<<<|>>>>>>|======)
+
+command! SumNumbers call SumNumbers()
+function! SumNumbers()
+    :%!awk '{sum+=$1} END {print "Total: "sum}'
+endfunction
