@@ -9,7 +9,7 @@
 " author: @latavin243
 
 " basic settings {{{
-let mapleader=','
+lua require('core')
 
 " source nvim config
 nnoremap <leader>so :source $MYVIMRC<cr>
@@ -17,44 +17,13 @@ nnoremap <leader>so :source $MYVIMRC<cr>
 syntax enable
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 lang en_US.UTF-8
-set foldenable
-set hidden
-set mouse=a
 set nocompatible
-set showcmd
 set title
 set ttyfast  " scroll faster
 set lazyredraw " scroll faster
 
-set inccommand=split
 set diffopt+=vertical " split vertically
 " }}}
-
-" indentation {
-set autoindent
-set expandtab
-set smartindent
-
-set shiftwidth=4
-set softtabstop=4
-set tabstop=4
-" }
-
-" appearance {
-set number
-" set relativenumber
-set textwidth=120
-set nowrap
-set scrolloff=4
-set sidescrolloff=10
-set laststatus=2
-" }
-
-" search {
-set hlsearch
-set ignorecase
-set incsearch
-set smartcase
 
 " match bracket
 set showmatch
@@ -62,11 +31,6 @@ set matchtime=2
 " }
 
 " editing {
-set nospell
-set nobackup
-set noswapfile
-set noundofile
-
 set backupdir=$HOME/.vim/.backup//
 set directory=$HOME/.vim/.swp//
 set undodir=$HOME/.vim/.undo//
@@ -123,8 +87,8 @@ vnoremap Y "+y
 vnoremap / y/\V<C-R>=escape(@",'/\')<CR><CR>
 
 " indentation
-nnoremap > >>
-nnoremap < <<
+" nnoremap > >>
+" nnoremap < <<
 
 " no hlsearch
 nnoremap <leader><cr> :noh
@@ -840,13 +804,6 @@ EOF
 " colorscheme PaperColor
 " colorscheme srcery
 color gruvbox
-
-" set termguicolors     " enable true colors support
-" let ayucolor="dark"   " for dark version of theme
-" colorscheme ayu
-
-" colorscheme jellybeans
-
 set t_Co=256
 set background=dark
 
