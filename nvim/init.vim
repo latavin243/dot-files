@@ -545,6 +545,7 @@ let g:coc_global_extensions = [
     \'coc-snippets',
     \'coc-vimlsp',
     \'coc-yaml',
+    \'coc-go',
 \]
 
 " Trigger completion.
@@ -722,6 +723,9 @@ let g:go_info_mode = 'gocode'
 let g:go_fmt_command="gopls"
 let g:go_gopls_gofumpt=1
 let g:go_fmt_experimental = 1
+
+" conflict with coc-go
+let g:go_code_completion_enabled = 0
 
 " linter
 let g:go_metalinter_enabled = [
