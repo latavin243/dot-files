@@ -37,6 +37,21 @@ local function load_options()
 
     -- spell
     spell = false;
+
+    -- errorbell
+    errorbells = false;
+
+    -- match bracket
+    showmatch = true;
+    matchtime = 2;
+
+    -- editing
+    autoread = true; -- auto read if file is modified in other place
+    title = true;
+    wildmenu = true;
+
+    -- history
+    history = 1000;
   }
 
   local window_local = {
@@ -60,6 +75,10 @@ local function load_options()
 
     -- undo file
     undofile = false;
+
+    -- faster scroll
+    ttyfast = true;
+    lazyredraw = true;
   }
 
   for name, value in pairs(global_local) do

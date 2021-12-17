@@ -18,28 +18,15 @@ syntax enable
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 lang en_US.UTF-8
 set nocompatible
-set title
-set ttyfast  " scroll faster
-set lazyredraw " scroll faster
 
 set diffopt+=vertical " split vertically
 " }}}
-
-" match bracket
-set showmatch
-set matchtime=2
-" }
 
 " editing {
 set backupdir=$HOME/.vim/.backup//
 set directory=$HOME/.vim/.swp//
 set undodir=$HOME/.vim/.undo//
 
-set noerrorbells
-set history=1000
-set autoread  " auto read if file is modified in other place
-
-set wildmenu
 set wildmode=longest,list,full
 " }
 
@@ -52,16 +39,6 @@ nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
-
-" " split window jump
-" nnoremap <c-h> <nop>
-" nnoremap <c-j> <nop>
-" nnoremap <c-k> <nop>
-" nnoremap <c-l> <nop>
-" nnoremap <c-h> <c-w>h
-" nnoremap <c-j> <c-w>j
-" nnoremap <c-k> <c-w>k
-" nnoremap <c-l> <c-w>l
 
 " quick scroll
 nnoremap <c-e> 2<c-e>
