@@ -335,6 +335,9 @@ let g:NERDSpaceDelims=1
 let g:NERDCompactSexyComs=1
 let g:NERDCommentEmptyLines=1
 let g:NERDDefaultAlign='left'
+let g:NERDCreateDefaultMappings = 0
+nmap <leader>cc <plug>NERDCommenterToggle
+xmap <leader>cc <plug>NERDCommenterToggle
 " }
 
 " graphviz {
@@ -394,13 +397,14 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_UseMemoryCache = 0
 nnoremap <leader>ll :Leaderf<space>
-" nnoremap <leader>ff :LeaderfFile<cr>
-nnoremap <leader>ff :FZF<cr>
+nnoremap <leader>ff :LeaderfFile<cr>
+" nnoremap <leader>ff :FZF<cr>
 nnoremap <leader>bb :LeaderfBuffer<cr>
 nnoremap <leader>sf :Leaderf<space>rg<cr>
 nnoremap <leader>rg :Leaderf<space>rg<cr>
 let g:Lf_CommandMap = {
 \   '<C-k>': ['<C-p>'],
+\   '<C-p>': ['<C-k>'],
 \   '<C-j>': ['<C-n>'],
 \}
 nmap <leader>wg <plug>LeaderfRgCwordLiteralBoundary<cr>
