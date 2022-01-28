@@ -397,8 +397,8 @@ let g:Lf_PreviewInPopup = 1
 let g:Lf_UseVersionControlTool = 0
 let g:Lf_UseMemoryCache = 0
 nnoremap <leader>ll :Leaderf<space>
-nnoremap <leader>ff :LeaderfFile<cr>
-" nnoremap <leader>ff :FZF<cr>
+" nnoremap <leader>ff :LeaderfFile<cr>
+nnoremap <leader>ff :FZF<cr>
 nnoremap <leader>bb :LeaderfBuffer<cr>
 nnoremap <leader>sf :Leaderf<space>rg<cr>
 nnoremap <leader>rg :Leaderf<space>rg<cr>
@@ -491,6 +491,7 @@ let g:coc_global_extensions = [
     \'coc-vimlsp',
     \'coc-yaml',
     \'coc-go',
+    \'coc-metals',
 \]
 
 " Trigger completion.
@@ -661,9 +662,10 @@ let g:go_highlight_string_spellcheck = 1
 let g:go_decls_includes = "func"
 let g:go_decls_includes = "func,type"
 
-let g:go_def_mode = 'godef'
-let g:go_info_mode = 'gocode'
-" let g:go_fmt_command = "goimports"
+" let g:go_def_mode = 'godef'
+" let g:go_info_mode = 'gocode'
+let g:go_def_mode = 'gopls'
+let g:go_info_mode = 'gopls'
 " use gofumpt
 let g:go_fmt_command="gopls"
 let g:go_gopls_gofumpt=1
@@ -871,6 +873,7 @@ func! CleanHistoryFunc()
     " delete repeat history
     :g/^: \d\{10\}:\d;\(.*\)$\n: \d\{10\}:\d;\1$/d
     :g/^: \d\{10\}:\d;\(.*\)$\n.*\n: \d\{10\}:\d;\1$/d
+    :g/^: \S*;\(.*\)$\n^: \S*;\1$/d
 endfunc
 
 func! TomlToJSON()

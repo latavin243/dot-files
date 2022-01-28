@@ -106,7 +106,8 @@
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".git"],
-      "filetypes": ["go"]
+      "filetypes": ["go"],
+      "initializationOptions": {}
     }
   },
 
