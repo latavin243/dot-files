@@ -8,7 +8,7 @@
 
 " author: @latavin243
 
-" basic settings {{{
+" basic settings
 lua require('core')
 
 " source nvim config
@@ -20,7 +20,6 @@ lang en_US.UTF-8
 set nocompatible
 
 set diffopt+=vertical " split vertically
-" }}}
 
 " editing {
 set backupdir=$HOME/.vim/.backup//
@@ -490,7 +489,6 @@ let g:coc_global_extensions = [
     \'coc-snippets',
     \'coc-vimlsp',
     \'coc-yaml',
-    \'coc-go',
     \'coc-metals',
 \]
 
@@ -671,8 +669,8 @@ let g:go_fmt_command="gopls"
 let g:go_gopls_gofumpt=1
 let g:go_fmt_experimental = 1
 
-" conflict with coc-go
-let g:go_code_completion_enabled = 0
+" " conflict with coc-go
+" let g:go_code_completion_enabled = 0
 
 " linter
 let g:go_metalinter_enabled = [
