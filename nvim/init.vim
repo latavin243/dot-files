@@ -187,6 +187,8 @@ Plug 'Yggdroot/indentLine'
 Plug 'chiel92/vim-autoformat'
 Plug 'terryma/vim-expand-region'
 
+" Plug 'khzaw/vim-conceal'
+
 " repeat f and t (needs vim-repeat)
 Plug 'dahu/vim-fanfingtastic'
 
@@ -489,7 +491,6 @@ let g:coc_global_extensions = [
     \'coc-snippets',
     \'coc-vimlsp',
     \'coc-yaml',
-    \'coc-metals',
 \]
 
 " Trigger completion.
@@ -642,7 +643,8 @@ Plug 'kamykn/popup-menu.nvim'
 " === language
 " ===
 " vim-go {
-Plug 'fatih/vim-go' , { 'for': [ 'go', 'vim', 'vim-plug' ], 'tag': '*' }
+Plug 'fatih/vim-go' , { 'for': [ 'go', 'vim', 'vim-plug' ], 'branch': 'master' }
+" Plug 'fatih/vim-go' , { 'for': [ 'go', 'vim', 'vim-plug' ], 'tag': '*' }
 " Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*', 'do': ':GoUpdateBinaries' }
 let g:go_version_warning = 0
 " highlights
@@ -765,6 +767,11 @@ let g:wildfire_objects = ["iw", "i'", 'i"', "i)", "i]", "i}", "ip", "it"]
 " Plug 'rhysd/accelerated-jk'
 " nmap j <Plug>(accelerated_jk_gj)
 " nmap k <Plug>(accelerated_jk_gk)
+
+" copilot
+Plug 'github/copilot.vim', {'branch': 'release'}
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
 
 call plug#end()
 " }
