@@ -30,7 +30,7 @@ set wildmode=longest,list,full
 " }
 
 " key mappings {
-" nnoremap s <nop>
+nnoremap s <nop>
 map Q <nop>
 
 " buffer
@@ -154,7 +154,7 @@ autocmd Filetype python set foldmethod=indent
 autocmd Filetype python set textwidth=120
 autocmd FileType python set colorcolumn=120
 autocmd BufEnter *.py :set ft=python
-autocmd bufwrite *.py :Autoformat
+" autocmd bufwrite *.py :Autoformat
 " }
 
 " csv {
@@ -187,7 +187,7 @@ Plug 'Yggdroot/indentLine'
 Plug 'chiel92/vim-autoformat'
 Plug 'terryma/vim-expand-region'
 
-" Plug 'khzaw/vim-conceal'
+Plug 'calebsmith/vim-lambdify'
 
 " repeat f and t (needs vim-repeat)
 Plug 'dahu/vim-fanfingtastic'
@@ -273,19 +273,23 @@ let g:peekaboo_window="call CreateCenteredFloatingWindow(0.6, 0.6)"
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
-" nmap <leader>ss <plug>(easymotion-s2)
-" nmap <leader>ss <plug>(easymotion-overwin-sn)
-nmap <leader>sn <plug>(easymotion-overwin-sn)
-nmap <leader>ss <plug>(easymotion-sn)
 autocmd User EasyMotionPromptBegin silent! CocDisable
 autocmd User EasyMotionPromptEnd silent! CocEnable
 let g:EasyMotion_smartcase=1
-let g:EasyMotion_keys = 'fjdkswbeoavn'
+" let g:EasyMotion_keys = 'fjdkslurwbeoavn'
+let g:EasyMotion_keys = 'asdfghjklqwertyuiop'
+
 " jump by n chars
 nmap <leader>jl <plug>(easymotion-overwin-line)
 nmap <leader>jn <plug>(easymotion-overwin-sn)
+" nmap <leader>ss <plug>(easymotion-s2)
+" nmap <leader>ss <plug>(easymotion-overwin-sn)
+" nmap <leader>sn <plug>(easymotion-overwin-sn)
+" nmap <leader>ss <plug>(easymotion-sn)
+
 " jump word
 nmap <leader>jw <Plug>(easymotion-overwin-w)
+nnoremap ss <plug>(easymotion-overwin-w)
 " }
 
 " guentags {
@@ -428,7 +432,8 @@ Plug 'godlygeek/tabular'
 " Plug 'plasticboy/vim-markdown'
 
 " markdown-preview {
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown'] }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown'] }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install', 'for' :['markdown'] }
 let g:mkdp_auto_start = 0
 let g:mkdp_auto_close = 1
 let g:mkdp_refresh_slow = 0
@@ -508,6 +513,7 @@ nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
 nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> <c-]> <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 " nmap <silent> gv :call CocAction('jumpDefinition', 'vsplit')<cr>
 " nmap <silent> gi <Plug>(coc-implementation)
@@ -644,8 +650,6 @@ Plug 'kamykn/popup-menu.nvim'
 " ===
 " vim-go {
 Plug 'fatih/vim-go' , { 'for': [ 'go', 'vim', 'vim-plug' ], 'branch': 'master' }
-" Plug 'fatih/vim-go' , { 'for': [ 'go', 'vim', 'vim-plug' ], 'tag': '*' }
-" Plug 'fatih/vim-go' , { 'for': 'go', 'tag': '*', 'do': ':GoUpdateBinaries' }
 let g:go_version_warning = 0
 " highlights
 let g:go_highlight_functions = 1
@@ -826,6 +830,10 @@ func! RunVimRun()
         let output_file_path=current_file_name . '.png'
         exec "!dot -Tpng % -o " . output_file_path
         exec "!open " . output_file_path
+    elseif &filetype == 'scala'
+        set splitbelow
+        :sp
+        :term scala %
     endif
 endfunc
 
@@ -959,6 +967,7 @@ endfunc
 " nmap <leader>k :<C-U>PreviewDefinition<CR>
 " nmap <silent> gp :call CocAction('jumpDefinition', 'copen')<CR>
 
+" format mysql connection command
 command! ConvertAllDSNToMyCLI call ConvertAllDSNToMyCLIFunc()
 func! ConvertAllDSNToMyCLIFunc()
     :%s/^\s*"dsn": "\(.*\):\(.*\)@tcp(\(.*\):\(\d*\))\/\(\w*\)?.*$/mycli -h \3 -P \4 -u \1 -p \2 -D \5/
