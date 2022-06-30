@@ -970,7 +970,8 @@ endfunc
 " format mysql connection command
 command! ConvertAllDSNToMyCLI call ConvertAllDSNToMyCLIFunc()
 func! ConvertAllDSNToMyCLIFunc()
-    :%s/^\s*"dsn": "\(.*\):\(.*\)@tcp(\(.*\):\(\d*\))\/\(\w*\)?.*$/mycli -h \3 -P \4 -u \1 -p \2 -D \5/
+    " :%s/^\s*"dsn": "\(.*\):\(.*\)@tcp(\(.*\):\(\d*\))\/\(\w*\)?.*$/mycli -h \3 -P \4 -u \1 -p \2 -D \5/
+    :%s/^\s*"\?dsn"\?\s*[:=]\s*"\(.*\):\(.*\)@tcp(\(.*\):\(\d*\))\/\(\w*\)?.*$/mycli -h \3 -P \4 -u \1 -p \2 -D \5/
 endfunc
 
 command! TidyJIRA call TidyJIRAFunc()
