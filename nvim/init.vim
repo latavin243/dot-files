@@ -732,14 +732,14 @@ Plug 'rizzatti/dash.vim'
 " ===
 " === theme
 " ===
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'NLKNguyen/papercolor-theme'
 " Plug 'vim-scripts/peaksea'
 Plug 'srcery-colors/srcery-vim'
-Plug 'ayu-theme/ayu-vim'
+" Plug 'ayu-theme/ayu-vim'
 Plug 'morhetz/gruvbox'
 let g:gruvbox_contrast_dark='hard'
 
-Plug 'nanotech/jellybeans.vim'
+" Plug 'nanotech/jellybeans.vim'
 
 
 " lightline {
