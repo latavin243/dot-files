@@ -104,8 +104,8 @@ cnoremap <m-f> <s-right>
 
 inoremap <c-b> <left>
 inoremap <c-f> <right>
-inoremap <c-n> <down>
-inoremap <c-p> <up>
+" inoremap <c-n> <down>
+" inoremap <c-p> <up>
 inoremap <c-a> <home>
 inoremap <c-e> <end>
 inoremap <c-d> <del>
@@ -496,6 +496,7 @@ let g:coc_global_extensions = [
     \'coc-snippets',
     \'coc-vimlsp',
     \'coc-yaml',
+    \'coc-sh',
 \]
 
 " Trigger completion.
@@ -522,18 +523,23 @@ nmap <leader>rn <Plug>(coc-rename)
 nnoremap <leader>ee :CocCommand explorer<cr>
 " nnoremap <c-c> :CocCommand<CR>
 
-" Use tab for trigger completion with characters ahead and navigate.
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
+function! s:check_backspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" Insert <tab> when previous text is space, refresh completion if not.
+inoremap <silent><expr> <TAB>
+  \ coc#pum#visible() ? coc#pum#next(1):
+  \ <SID>check_backspace() ? "\<Tab>" :
+  \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+inoremap <silent><expr> <C-n> coc#pum#visible() ? coc#pum#next(1) : "\<C-n>"
+inoremap <silent><expr> <C-p> coc#pum#visible() ? coc#pum#prev(1) : "\<C-p>"
+
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
