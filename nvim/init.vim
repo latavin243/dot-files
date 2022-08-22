@@ -727,6 +727,10 @@ autocmd! bufwrite *.go :GoImports
 Plug 'buoto/gotests-vim'
 " let g:gotests_template_dir = '/Users/qiguo/workspace/gotests_template/templates/'
 
+" === scala
+Plug 'nvim-lua/plenary.nvim'
+Plug 'scalameta/nvim-metals', { 'branch': 'main' }
+
 " python-mode {
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 let g:pymode_options_max_line_length=120
