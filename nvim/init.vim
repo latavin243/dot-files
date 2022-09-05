@@ -267,9 +267,8 @@ Plug 'edkolev/tmuxline.vim'
 " show mark
 " Plug 'kshenoy/vim-signature'
 
-" reg list
-Plug 'junegunn/vim-peekaboo'
-let g:peekaboo_window="call CreateCenteredFloatingWindow(0.6, 0.6)"
+" register list
+Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
@@ -480,7 +479,7 @@ Plug 'nvim-treesitter/playground'
 " === autocomplete
 " ===
 " coc {
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'master'}
 
 let g:coc_global_extensions = [
     \'coc-actions',
@@ -932,13 +931,18 @@ func! AddEnum(n)
 endfunc
 
 command! ToGoJSONField call ToGoJSONFieldFunc()
+" func! ToGoJSONFieldFunc()
+"     :norm elD
+"     :s/\s*//g
+"     :s/\(.*\)/\1 _TODO_ `json:"\1"`/
+"     :norm 0
+"     :norm crc
+"     :norm gUl
+"     :nohl
+" endfunc
 func! ToGoJSONFieldFunc()
-    :norm elD
-    :s/\s*//g
-    :s/\(.*\)/\1 _TODO_ `json:"\1"`/
-    :norm 0
-    :norm crc
-    :norm gUl
+    :s/^\s*\(\w*\)\s*.*$/\1 _TODO_ `json:"\1"`/
+    :norm crm
     :nohl
 endfunc
 
