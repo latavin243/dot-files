@@ -32,6 +32,7 @@ set wildmode=longest,list,full
 " key mappings {
 nnoremap s <nop>
 map Q <nop>
+nnoremap <esc> :noh<cr>
 
 " buffer
 nnoremap <silent> [b :bprevious<CR>
@@ -141,6 +142,10 @@ endfunction
 " yaml
 autocmd! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml
 autocmd! FileType yaml set ts=2 sts=2 sw=2 nosi noai expandtab
+
+" mermaid
+autocmd! BufNewFile,BufReadPost *.{mmd} set filetype=mermaid
+autocmd! FileType mermaid set ts=2 sts=2 sw=2 nosi noai expandtab
 
 " json
 autocmd! FileType json set ts=2 sts=2 sw=2 nosi noai expandtab
@@ -479,7 +484,7 @@ Plug 'nvim-treesitter/playground'
 " === autocomplete
 " ===
 " coc {
-Plug 'neoclide/coc.nvim', {'branch': 'master'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 let g:coc_global_extensions = [
     \'coc-actions',
@@ -521,6 +526,8 @@ nmap <silent> gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
 nnoremap <leader>ee :CocCommand explorer<cr>
 " nnoremap <c-c> :CocCommand<CR>
+
+nnoremap <c-w><c-p> <Plug>(coc-float-jump)
 
 function! s:check_backspace() abort
   let col = col('.') - 1
@@ -839,6 +846,12 @@ func! RunVimRun()
         let output_file_path=current_file_name . '.png'
         exec "!dot -Tpng % -o " . output_file_path
         exec "!open " . output_file_path
+    elseif &filetype == 'mermaid'
+        " let current_file_name=expand('%:r')
+        " let output_file_path=current_file_name . '.png'
+        " exec "!mmdc -H -i " . current_file_name . ".mmd -o " output_file_path . " -t bright -b transparent"
+        " exec "!open " . output_file_path
+        exec "!mermaid %"
     elseif &filetype == 'scala'
         set splitbelow
         :sp
