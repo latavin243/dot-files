@@ -273,7 +273,7 @@ Plug 'edkolev/tmuxline.vim'
 " Plug 'kshenoy/vim-signature'
 
 " register list
-Plug 'tversteeg/registers.nvim', { 'branch': 'main' }
+Plug 'tversteeg/registers.nvim', {'branch': 'main'}
 
 " easymotion {
 Plug 'easymotion/vim-easymotion'
@@ -491,7 +491,6 @@ let g:coc_global_extensions = [
     \'coc-diagnostic',
     \'coc-explorer',
     \'coc-floaterm',
-    \'coc-java',
     \'coc-json',
     \'coc-lists',
     \'coc-prettier',
@@ -1037,3 +1036,4 @@ command! SumNumbers call SumNumbers()
 function! SumNumbers()
     :%!awk '{sum+=$1} END {print "Total: "sum}'
 endfunction
+
