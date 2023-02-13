@@ -218,7 +218,7 @@ Plug 'vim-scripts/VisIncr'
 " :I, :I -1, :II, etc
 
 " rst-tables
-Plug 'nvie/vim-rst-tables'
+Plug 'Stormherz/tablify'
 
 " cycle, e.g. true <-> false
 Plug 'bootleq/vim-cycle'
@@ -425,6 +425,8 @@ vmap <leader>wg <plug>LeaderfRgCwordLiteralBoundary<cr>
 " ===
 " tabular {
 Plug 'godlygeek/tabular'
+
+Plug 'vim-scripts/swapcol.vim'
 " }
 
 " ===
@@ -477,7 +479,7 @@ nmap ga <Plug>(EasyAlign)
 " ===
 
 " treesitter
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 
 " ===
