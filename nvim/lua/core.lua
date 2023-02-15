@@ -1,94 +1,75 @@
-local function bind_option(options)
-  for k, v in pairs(options) do
-    if v == true or v == false then
-      vim.cmd('set ' .. k)
-    else
-      vim.cmd('set ' .. k .. '=' .. v)
-    end
-  end
-end
+local opt = vim.opt
 
-local function load_options()
-  vim.g.mapleader = ","
+vim.g.mapleader = ","
 
-  local global_local = {
-    termguicolors = true;
-    hidden        = true;
-    mouse         = "nv";
-    showcmd       = false;
-    inccommand    = "nosplit";
+opt.termguicolors = true;
+opt.hidden        = true;
+opt.mouse         = "nv";
+opt.showcmd       = false;
+opt.inccommand    = "nosplit";
 
-    -- scroll
-    scrolloff      = 4;
-    sidescrolloff  = 10;
-    laststatus     = 2;
+-- scroll
+opt.scrolloff      = 4;
+opt.sidescrolloff  = 10;
+opt.laststatus     = 2;
 
-    -- search
-    incsearch  = true;
-    ignorecase = true;
-    hlsearch   = true;
-    smartcase  = true;
-    -- wildignorecase = true;
+-- search
+opt.incsearch  = true;
+opt.ignorecase = true;
+opt.hlsearch   = true;
+opt.smartcase  = true;
+-- opt.wildignorecase = true;
 
-    -- backup, swap
-    backup         = false;
-    writebackup    = false;
-    swapfile       = false;
+-- backup, swap
+opt.backup         = false;
+opt.writebackup    = false;
+opt.swapfile       = false;
 
-    -- spell
-    spell = false;
+-- spell
+opt.spell = false;
 
-    -- errorbell
-    errorbells = false;
+-- errorbell
+opt.errorbells = false;
 
-    -- match bracket
-    showmatch = true;
-    matchtime = 2;
+-- match bracket
+opt.showmatch = true;
+opt.matchtime = 2;
 
-    -- editing
-    autoread = true; -- auto read if file is modified in other place
-    title = true;
-    wildmenu = true;
+-- editing
+opt.autoread = true; -- auto read if file is modified in other place
+opt.title = true;
+opt.wildmenu = true;
 
-    -- history
-    history = 1000;
-  }
+-- history
+opt.history = 1000;
 
-  local window_local = {
-    wrap = false;
-  }
+--
+-- bw local
+--
 
-  local bw_local = {
-    foldenable     = true;
+opt.foldenable     = true;
 
-    -- indentation
-    autoindent  = true;
-    tabstop     = 4;
-    shiftwidth  = 4;
-    softtabstop = 4;
-    expandtab   = true;
-    smartindent = true;
+-- indentation
+opt.autoindent  = true;
+opt.tabstop     = 4;
+opt.shiftwidth  = 4;
+opt.softtabstop = 4;
+opt.expandtab   = true;
+opt.smartindent = true;
 
-    -- appearance
-    number         = true;
-    textwidth      = 120;
+-- appearance
+opt.number         = true;
+opt.textwidth      = 120;
 
-    -- undo file
-    undofile = false;
+-- undo file
+opt.undofile = false;
 
-    -- faster scroll
-    ttyfast = true;
-    lazyredraw = true;
-  }
+-- faster scroll
+opt.ttyfast = true;
+opt.lazyredraw = true;
 
-  for name, value in pairs(global_local) do
-    vim.o[name] = value
-  end
-  for name, value in pairs(window_local) do
-    vim.wo[name] = value
-  end
+--
+-- window local
+--
 
-  bind_option(bw_local)
-end
-
-load_options()
+vim.wo.wrap = false;
