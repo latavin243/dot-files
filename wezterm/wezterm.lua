@@ -1,6 +1,5 @@
 local tab_format = require "tab_format"
 local wezterm = require "wezterm"
-local act = wezterm.action
 
 wezterm.on("format-tab-title", tab_format.format_tab_title)
 
@@ -21,25 +20,31 @@ config.default_cursor_style = 'SteadyBlock'
 
 
 -- tab bar
-config.hide_tab_bar_if_only_one_tab = false
-config.show_new_tab_button_in_tab_bar = false
-config.show_tab_index_in_tab_bar = true
+config.hide_tab_bar_if_only_one_tab               = false
+config.show_new_tab_button_in_tab_bar             = false
+config.show_tab_index_in_tab_bar                  = true
 config.switch_to_last_active_tab_when_closing_tab = false
 -- config.tab_and_split_indices_are_zero_based = false
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar                          = true
+
 
 -- window
-config.enable_scroll_bar = true
--- config.window_background_opacity = 0.85
-config.window_padding = { left = 0, right = 0, top = 0, bottom = 0, }
+config.enable_scroll_bar         = true
+config.window_background_opacity = 0.75
+-- config.macos_window_background_blur = 10
+config.window_padding            = { left = 0, right = 0, top = 0, bottom = 0, }
+config.initial_cols              = 150
+config.initial_rows              = 40
+
 
 -- keys
+local act     = wezterm.action
 config.leader = { key = "q", mods = "CTRL", timeout_milliseconds = 1000 }
-config.keys = {
+config.keys   = {
+  { key = "f",  mods = "CMD|SHIFT", action = wezterm.action.ToggleFullScreen, },
+  { key = "t",  mods = "CMD",       action = act({ SpawnCommandInNewTab = { cwd = wezterm.home_dir } }), },
   { key = "w",  mods = "CMD",       action = act.CloseCurrentPane { confirm = false }, },
   -- { key = "w",  mods = "CMD",       action = act.CloseCurrentTab { confirm = false }, },
-  { key = "t",  mods = "CMD",       action = act({ SpawnCommandInNewTab = { cwd = wezterm.home_dir } }), },
-  { key = "f",  mods = "CMD|SHIFT", action = wezterm.action.ToggleFullScreen, },
 
   { key = "q",  mods = "LEADER",    action = act.PaneSelect },
   { key = "%",  mods = "LEADER",    action = wezterm.action.SplitHorizontal {}, },
