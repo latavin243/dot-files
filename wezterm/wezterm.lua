@@ -1,13 +1,14 @@
 local wezterm = require "wezterm"
 local tab_format = require "tab_format"
-local toggle_opacity = require "toggle_opacity"
+local custom = require "custom"
 
 wezterm.on("format-tab-title", tab_format.format_tab_title)
-wezterm.on("toggle-opacity", toggle_opacity.toggle_opacity)
+wezterm.on("toggle-opacity", custom.toggle_opacity)
 
-local config = {}
+local config = wezterm.config_builder()
 
 config.default_prog = { "zsh" }
+config.set_environment_variables = { PATH = "/opt/homebrew/bin:" .. os.getenv("PATH") }
 
 -- ui
 config.harfbuzz_features = { "calt=0" }
@@ -46,17 +47,15 @@ config.keys   = {
   { key = "f",  mods = "CMD|SHIFT", action = wezterm.action.ToggleFullScreen, },
   { key = "t",  mods = "CMD",       action = act({ SpawnCommandInNewTab = { cwd = wezterm.home_dir } }), },
   { key = "w",  mods = "CMD",       action = act.CloseCurrentPane { confirm = false }, },
-  -- { key = "w",  mods = "CMD",       action = act.CloseCurrentTab { confirm = false }, },
-
+  { key = ",",  mods = "CMD",       action = act.SpawnCommandInNewTab { cwd = wezterm.home_dir, args = { 'nvim', wezterm.config_file } } },
   { key = "p",  mods = "CMD|SHIFT", action = act.ActivateCommandPalette },
+  { key = "[",  mods = "CMD|ALT",   action = act.MoveTabRelative(-1) },
+  { key = "]",  mods = "CMD|ALT",   action = act.MoveTabRelative(1) },
 
   { key = "q",  mods = "LEADER",    action = act.PaneSelect },
   { key = "%",  mods = "LEADER",    action = wezterm.action.SplitHorizontal {}, },
   { key = "\"", mods = "LEADER",    action = wezterm.action.SplitVertical {}, },
   { key = 'o',  mods = 'LEADER',    action = act.EmitEvent 'toggle-opacity' },
-
-  { key = "[",  mods = "CMD|ALT",   action = act.MoveTabRelative(-1) },
-  { key = "]",  mods = "CMD|ALT",   action = act.MoveTabRelative(1) },
 
   -- open link
   {
@@ -79,20 +78,6 @@ config.keys   = {
     }),
   },
 
-  -- edit config
-  {
-    key = ",",
-    mods = "CMD",
-    action = wezterm.action_callback(function(window, pane)
-      local wez_config_path = os.getenv("HOME") .. "/.config/wezterm/wezterm.lua"
-      wezterm.log_info("wez config" .. wez_config_path)
-      window:perform_action(
-        wezterm.action.SpawnCommandInNewTab {
-          args = { "nvim", wez_config_path },
-          set_environment_variables = { PATH = "/opt/homebrew/bin:" .. os.getenv("PATH") },
-        }, pane)
-    end),
-  },
 }
 
 return config
