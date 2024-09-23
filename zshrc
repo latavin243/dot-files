@@ -79,12 +79,12 @@ alias emacsfs='emacs -fs'
 alias eclient="emacsclient -a 'emacs' &"
 alias d='fanyi'
 alias ts='date -r' # -d on linux
-alias v='nvim'
 alias r='ranger'
 alias weather='curl wttr.in'
 alias rm='trash -F' # only useful under macOS
 alias penguinsay='cowsay -f tux'
 alias scala-cli="amm"
+alias stree='open -a SourceTree .'
 
 alias ls="eza --icons"
 alias ll="eza --icons --long --header"
@@ -108,36 +108,20 @@ alias vimtmux="vim $HOME/.tmux.conf.local"
 alias vimhistory="vim $HISTFILE"
 alias vihistory="vi $HISTFILE"
 alias vimranger='vim $HOME/.config/ranger/rc.conf'
-alias vimmd='vim /tmp/temp.md'
 
 export NVIMPATH="$HOME/.config/nvim"
 # alias vimvim="vim $NVIMPATH/init.vim"
 alias vimvim="cd $NVIMPATH; vim init.lua"
 alias vimwez="cd $HOME/workspace/dot-files; vim $HOME/.config/wezterm/wezterm.lua"
 alias vimtmp="vim /tmp/tmp.txt"
-alias vivim="vi $NVIMPATH/init.vim"
-alias vimcoc="vim $NVIMPATH/coc-settings.json"
-alias vimvimlocal="vim $HOME/.vimrc.local"
+alias vimmd="vim /tmp/tmp.md"
+alias vivim="vi $NVIMPATH/init.lua"
 alias vimideavim="vim $HOME/.ideavimrc"
 alias vimspell="vim $NVIMPATH/spell/en.utf-8.add"
 
 alias vimtmux="vim $HOME/.tmux.conf.local"
 alias vimtmuxori="vim $HOME/.tmux.conf"
-
-alias vimabbr="vim $HOME/Documents/abbr_dict.md"
 alias vimgitconf="git config --global --edit"
-
-alias nvimlua="nvim -u $HOME/.config/nvim-lua/init.lua"
-alias vimnvimlua="vim $HOME/.config/nvim-lua/init.lua"
-
-# ===
-# === vim
-# ===
-# alias vimplugrefresh="vim +PlugClean +PlugInstall +PlugUpdate +CocUpdate "
-# alias vimpluginstall="vim +PlugInstall +PlugClean +qa"
-# alias vimplugupdate="vim +PlugUpdate +PlugClean +qa"
-# alias vimgorefresh="vim +set ft=go +GoUpdateBinaries"
-# alias vimplugrefresh="vim +PackerSync"
 
 # ===
 # === git
@@ -161,11 +145,9 @@ alias gaf="git status -s | awk '{print $2}' | fzf -m | xargs git add"
 alias gafc="git status -s | awk '{print $2}' | fzf -m | xargs git add && git commit --verbose"
 alias gbdf='gbd $(gb | fzf -m)'
 alias grbf='grb $(gb | fzf)'
-alias gcmain='gco main'
 alias gcbrf='gfa; gco --track $(gb -r | fzf)'
 alias gblf='gbl $(fzf)'
 alias gcm='git checkout master || git checkout main'
-alias gmc='git merge --continue'
 alias gstam='git stash push -m'
 alias grso='git remote show origin'
 alias glhead='gfa; glod $(gb -r | fzf) | head -1 | tee >(pbcopy)'
