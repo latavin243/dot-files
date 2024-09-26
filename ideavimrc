@@ -1,0 +1,110 @@
+set scrolloff=5
+set showmode
+set history=1000
+" set rnu
+
+" for default search
+set ignorecase
+set hlsearch
+set smartcase
+set incsearch
+
+" specially for ideavim
+set ideajoin
+
+" surround
+set surround
+
+" key mapping
+" inoremap jk <esc>
+nnoremap gd :action GotoDeclaration<cr>
+nnoremap gs :action GotoImplementation<cr>
+nnoremap <c-o> <esc>:action Back<cr>
+nnoremap <c-i> <esc>:action Forward<cr>
+nnoremap <c-]> :action GotoDeclaration<cr>
+nnoremap <esc> :nohlsearch<cr>
+
+" copy to clipboard
+vnoremap Y "+y
+
+" Integrate with system clipboard
+" set clipboard=unnamedplus,unnamed
+
+let mapleader = ","
+
+" Use Q for formatting the current paragraph (or visual selection)
+vnoremap Q gq
+nnoremap Q gqap
+
+" key bindings for quickly moving between windows
+" h left, l right, k up, j down
+nnoremap <c-h> <c-w>h
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-l> <c-w>l
+
+
+" nmap gf :action GotoFile<cr>
+nnoremap gc :action GotoClass<cr>
+nnoremap gr :action ShowUsages<cr>
+nnoremap <leader>ns :action GotoSymbol<cr>
+nnoremap <leader>nm :action FileStructurePopup<cr>
+nnoremap <leader>d :action ShowErrorDescription<cr>
+nnoremap == :action ReformatCode<cr>
+nnoremap <leader>lf :action FileStructurePopup<cr>
+nnoremap <leader>ff :action GotoFile<cr>
+nnoremap <leader>sf :action FindInPath<cr>
+nnoremap <leader>ee :action ActivateProjectToolWindow<cr>
+nnoremap <leader>tt :action ActivateTerminalToolWindow<cr>
+nnoremap <leader>cc :action CommentByLineComment<cr>
+
+" string manipulation
+" requires plugin: String Manipulation
+nnoremap cr- :action StringManipulation.ToHyphenCaseAction<cr>
+nnoremap crc :action StringManipulation.ToCamelCase<cr>
+nnoremap crC :action StringManipulation.ToPascalCase<cr>
+nnoremap crs :action StringManipulation.ToSnakeCase<cr>
+
+" navigate functions
+nnoremap [d :action GotoPreviousError<cr>
+nnoremap ]d :action GotoNextError<cr>
+nnoremap ]] :action MethodDown<cr>
+nnoremap [[ :action MethodUp<cr>
+
+nnoremap m; :action ShowBookmakrs<cr>
+nnoremap m' :action Bookmakrs<cr>
+
+" IdeaVim uses 'a' for alt instead of Vim's 'm'
+" nnoremap <a-j> 15gj
+" nnoremap <a-k> 15gk
+
+" easymotion
+" requires plugin: AceJump
+nnoremap ff :action AceAction<cr>
+nnoremap tt :action AceTargetAction<cr>
+
+" emacs-like key bindings under insert & command mode
+cnoremap <c-b> <left>
+cnoremap <c-f> <right>
+cnoremap <c-n> <down>
+cnoremap <c-p> <up>
+cnoremap <c-a> <home>
+cnoremap <c-e> <end>
+cnoremap <c-d> <del>
+cnoremap <m-b> <s-left>
+cnoremap <m-f> <s-right>
+
+inoremap <c-b> <left>
+inoremap <c-f> <right>
+inoremap <c-n> <down>
+inoremap <c-p> <up>
+inoremap <c-a> <home>
+inoremap <c-e> <end>
+inoremap <c-d> <del>
+inoremap <c-k> <esc>lC
+
+" Plugins
+Plug 'easymotion/vim-easymotion'
+" Plug 'justinmk/vim-sneak'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-commentary'
